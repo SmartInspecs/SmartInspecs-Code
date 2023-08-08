@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
     --color-grey-2: #666666 ;
     --color-grey-3: #333333;
     --hover-text: #003300;
+    --black: #000;
 
     /* Font-weight */
     --font-weight-1: 700;
@@ -39,10 +40,10 @@ const GlobalStyle = createGlobalStyle`
     --font-weight-4: 400;
 
     /* Font-size (rem)*/
-    --title: 2.625;
-    --subtitle: 1.625;
-    --text: 1;
-    --sub-text: 0.625;
+    --title: 2.625; //(42px)
+    --subtitle: 1.625; // (26px)
+    --text: 1; //(16px)
+    --sub-text: 0.625; // (10px)
 }`
 
 export default GlobalStyle;
