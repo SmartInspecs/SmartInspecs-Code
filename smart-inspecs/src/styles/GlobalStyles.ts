@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     /* Font-size (rem)*/
     --title: 2.625; //(42px)
     --subtitle: 1.625; // (26px)
+    --subtitle-2: 1.25; // (20px)
     --text: 1; //(16px)
     --sub-text: 0.625; // (10px)
 }`
