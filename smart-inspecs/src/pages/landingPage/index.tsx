@@ -1,10 +1,11 @@
 import React from "react";
+import { Header } from "../../components/landingPage";
 
 const LandingPage = () => {
   return (
-    <div>
-      <h1>LandingPage</h1>
-    </div>
+    <>
+      <Header />
+    </>
   );
 };
 
