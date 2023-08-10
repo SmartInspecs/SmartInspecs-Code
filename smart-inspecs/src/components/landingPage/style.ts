@@ -13,6 +13,16 @@ export const Container = styled.div`
         margin-top: 2.75rem;
     }
 
+    button{
+        transition: 0.15s ease;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    button:hover{
+        transform: scale(1.1);
+    }
+
     nav > ul {
         display: flex;
         gap: 50px;
@@ -44,7 +54,6 @@ export const Container = styled.div`
         font-size: 1.25rem;
         font-weight: var(--font-weight-2);
         border-radius: 0.5rem;
-        cursor: pointer;
     }
 
     .callToAction{
@@ -55,14 +64,66 @@ export const Container = styled.div`
         align-items: center;
     }
 
-    .callToActionRight{
-        margin-left: 2rem;
+    .callToAction--Right{
+        margin-left: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 
     .callToAction__title{
         font-size: 2.625rem;
         font-weight: var(--font-weight-1);
+        line-height: 150%;
     }
 
+    .callToAction__subtitle{
+        font-size: 1.25rem;
+        line-height: 150%;
+    }
+
+    .callToAction--Right__buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
     
+    .callToAction--Right__buttons__teste{
+        background-color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        border-radius: 0.5rem;
+        width: 45%;
+        height: 46px; 
+        color: var(--white);
+        font-weight: var(--font-weight-2);
+        font-size: 1.25rem;
+    }
+    .callToAction--Right__buttons__conheca{
+        background-color: none;
+        border: 2px solid var(--primary-color);
+        border-radius: 0.5rem;
+        width: 45%;
+        height: 46px; 
+        color: var(--primary-color);
+        font-weight: var(--font-weight-2);
+        font-size: 1.25rem;
+    }
+
+    .division{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .division > hr{
+        border: 3px solid var(--green-destaque);
+        border-radius: 8px;
+        width: 40%;
+    }
+
+    .division > span{
+        font-size: 1.25rem;
+        font-weight: var(--font-weight-2);
+    }
 `
