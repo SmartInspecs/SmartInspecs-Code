@@ -1,19 +1,22 @@
 import React from "react";
 import { Container } from "./style";
 import Foto from "../../assets/Drone-PNG 1.png";
+import icon1 from "../../assets/icon1.png";
+import icon2 from "../../assets/icon 2.png";
+import icon3 from "../../assets/icon3.png";
 import { Link } from "react-router-dom";
 
 const LandingContent = () => {
   return (
     <Container>
       <nav>
-        <h2 className="logo">smart inspect</h2>
+        <h2 className="logo">smart inspecs</h2>
         <ul>
           <li>
             <Link to="#inicio">Início</Link>
           </li>
           <li>
-            <Link to="/">Nossas soluções</Link>
+            <Link to="#nossas">Nossas soluções</Link>
           </li>
           <li>
             <Link to="/">Sobre nós</Link>
@@ -42,11 +45,31 @@ const LandingContent = () => {
           </div>
         </div>
       </div>
-      <div className="division">
+      <div className="division" id="nossas">
         <hr />
         <span>nossas soluções</span>
         <hr />
       </div>
+      <ul className="solutions">
+        <li className="solutions__cards">
+          <img src={icon1} alt="Drone inspecionando uma casa" />
+          <span className="solutions__cards__title">
+            Inspeção de telhados e estruturas
+          </span>
+        </li>
+        <li className="solutions__cards">
+          <img src={icon2} alt="Escudo, indicando segurança" />
+          <span className="solutions__cards__title">
+            Inspeção de segurança da obra
+          </span>
+        </li>
+        <li className="solutions__cards">
+          <img src={icon3} alt="Lupa inspecionando uma fotografia" />
+          <span className="solutions__cards__title">
+            Reconhecimento de imagens de guarda-corpo
+          </span>
+        </li>
+      </ul>
     </Container>
   );
 };

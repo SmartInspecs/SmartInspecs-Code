@@ -126,4 +126,39 @@ export const Container = styled.div`
         font-size: 1.25rem;
         font-weight: var(--font-weight-2);
     }
+
+    .solutions{
+        margin-top: 3rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .solutions__cards{
+        width: 30%;
+        height: 276px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--green-destaque);
+        border-radius: 1rem;
+        gap: 1.5rem;
+        transition: 0.15s ease;
+    }
+
+    .solutions__cards:hover{
+        transform: scale(1.05);
+    }
+    .solutions__cards > img{
+        padding-top: 1rem;
+    }
+
+    .solutions__cards__title{
+        width: 80%;
+        text-align: center;
+        font-size: 1.25rem;
+        font-weight: var(--font-weight-1);
+        line-height: 150%;
+    }
+
 `
