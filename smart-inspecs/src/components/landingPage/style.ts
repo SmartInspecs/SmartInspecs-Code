@@ -161,4 +161,35 @@ export const Container = styled.div`
         line-height: 150%;
     }
 
+    .aboutUs{
+        margin-top: 9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+        width: 100%;
+    }
+
+    .aboutUs__card{
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .aboutUs_card_text{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .aboutUs__card__text__title{
+        font-size: 2.5rem;
+        font-weight: var(--font-weight-1);
+    }
+
+    .aboutUs__card__text__subtitle{
+        font-size: 1rem;
+        font-weight: var(--font-weight-3);
+        line-height: 150%;
+    }
 `

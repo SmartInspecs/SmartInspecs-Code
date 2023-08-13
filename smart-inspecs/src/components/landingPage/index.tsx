@@ -4,6 +4,7 @@ import Foto from "../../assets/Drone-PNG 1.png";
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon 2.png";
 import icon3 from "../../assets/icon3.png";
+import imgSample from "../../assets/img_sample.png";
 import { Link } from "react-router-dom";
 
 const LandingContent = () => {
@@ -70,6 +71,31 @@ const LandingContent = () => {
           </span>
         </li>
       </ul>
+      <div className="aboutUs">
+        <div className="aboutUs__card">
+          <img src={imgSample} alt="imagem temporária" />
+          <div className="aboutUs_card_text">
+            <h3 className="aboutUs__card__text__title">inspeção com drones</h3>
+            <p className="aboutUs__card__text__subtitle">
+              Somos uma empresa que desenvolve soluções para inspeção de obras
+              civis, utilizando drones e inteligência artificial. Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Nam egestas at ipsum
+              et tincidunt. In cursus auctor dolor sit amet vestibulum. Maecenas
+              blandit nibh nec commodo elementum.
+            </p>
+          </div>
+        </div>
+        <div className="aboutUs__card__2">
+          <div className="aboutUs_card_text">
+            <h3 className="aboutUs__card__title">inspeção com drones</h3>
+            <p className="aboutUs__card__subtitle">
+              Nossa missão é ajudar as empresas a reduzirem custos e aumentarem
+              a segurança de seus funcionários.
+            </p>
+          </div>
+          <img src={imgSample} alt="imagem temporária" />
+        </div>
+      </div>
     </Container>
   );
 };
