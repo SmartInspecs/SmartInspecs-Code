@@ -192,4 +192,11 @@ export const Container = styled.div`
         font-weight: var(--font-weight-3);
         line-height: 150%;
     }
+    
+    .aboutUs__card__2{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.5rem;
+    }
 `

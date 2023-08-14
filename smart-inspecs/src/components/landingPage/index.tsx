@@ -87,8 +87,8 @@ const LandingContent = () => {
         </div>
         <div className="aboutUs__card__2">
           <div className="aboutUs_card_text">
-            <h3 className="aboutUs__card__title">inspeção com drones</h3>
-            <p className="aboutUs__card__subtitle">
+            <h3 className="aboutUs__card__text__title">inspeção com drones</h3>
+            <p className="aboutUs__card__text__subtitle">
               Nossa missão é ajudar as empresas a reduzirem custos e aumentarem
               a segurança de seus funcionários.
             </p>
