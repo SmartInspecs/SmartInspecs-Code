@@ -28,9 +28,15 @@ export const Container = styled.div`
         gap: 50px;
     }
 
+    nav > ul > li{
+        list-style: none;
+        border-bottom: 4px solid transparent;
+        padding: 0px 4px;
+    }
+
     nav > ul > li:hover{
         border-bottom: 4px solid var(--green-destaque);
-        transition: 0.15s ease;
+        transition: 0.5s ease;
     }
     
     a{
@@ -109,7 +115,9 @@ export const Container = styled.div`
         font-weight: var(--font-weight-2);
         font-size: 1.25rem;
     }
-
+/* 
+    Divisão entre as seções
+*/
     .division{
         width: 100%;
         display: flex;
@@ -167,12 +175,19 @@ export const Container = styled.div`
         flex-direction: column;
         gap: 2.5rem;
         width: 100%;
+        margin-bottom: 9rem;
     }
 
     .aboutUs__card{
         display: flex;
         align-items: center;
         gap: 2.5rem;
+    }
+
+    .aboutUs__card > img{
+        width: 478px;
+        height: 600px;
+        object-fit: cover;
     }
 
     .aboutUs_card_text{
@@ -199,4 +214,46 @@ export const Container = styled.div`
         justify-content: space-between;
         gap: 2.5rem;
     }
+
+    .aboutUs__card__2 > img{
+        width: 478px;
+        height: 600px;
+        object-fit: cover;
+    }
+
+    .partners{
+        margin-top: 5rem;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        gap: 12px;
+        overflow-x: auto;
+    }
+
+    .partners > li{
+        margin-bottom: 24px;
+    }
+
+    .partners::-webkit-scrollbar-track {
+        border: 1px solid var(--color-grey-0-5);
+        border-radius: 10px;
+        padding: 2px 0;
+        background-color: var(--color-grey-0-5);
+    }
+
+    .partners::-webkit-scrollbar {
+        width: 10px;    
+    }
+
+    .partners::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: var(--green-sutil);
+        border: 1px solid var(--green-sutil);
+    }
+
+    .partners > li > img{
+        width: 300px;
+        height: auto;
+    }
+
 `

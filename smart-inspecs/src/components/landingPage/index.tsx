@@ -4,9 +4,14 @@ import Foto from "../../assets/Drone-PNG 1.png";
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon 2.png";
 import icon3 from "../../assets/icon3.png";
-import imgSample from "../../assets/img_sample.png";
+import qualidade from "../../assets/qualidade.jpeg";
+import seguranca from "../../assets/seguranca.jpeg";
 import { Link } from "react-router-dom";
-
+import mrv from "../../assets/mrvlogo.png";
+import cnpq from "../../assets/CNPq_v2017_rgb.jpg";
+import capes from "../../assets/logo-original-capes.png";
+import fapesb from "../../assets/fapesb3.jpg";
+import fep from "../../assets/Fep-logo.png";
 const LandingContent = () => {
   return (
     <Container>
@@ -73,29 +78,64 @@ const LandingContent = () => {
       </ul>
       <div className="aboutUs">
         <div className="aboutUs__card">
-          <img src={imgSample} alt="imagem temporária" />
+          <img src={seguranca} alt="inspeção de qualidade com drone" />
           <div className="aboutUs_card_text">
-            <h3 className="aboutUs__card__text__title">inspeção com drones</h3>
+            <h3 className="aboutUs__card__text__title">
+              inspeção de segurança
+            </h3>
             <p className="aboutUs__card__text__subtitle">
-              Somos uma empresa que desenvolve soluções para inspeção de obras
-              civis, utilizando drones e inteligência artificial. Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit. Nam egestas at ipsum
-              et tincidunt. In cursus auctor dolor sit amet vestibulum. Maecenas
-              blandit nibh nec commodo elementum.
+              A inspeção automatizada de fachadas e telhados por meio de drones
+              e algoritmos de inteligência artificial é uma abordagem inovadora
+              e eficiente para avaliar a condição estrutural e a integridade de
+              edifícios e outras estruturas. Essa combinação de tecnologias
+              permite realizar inspeções com mais celeridade, precisão e
+              segurança em comparação com os métodos tradicionais.
             </p>
           </div>
         </div>
         <div className="aboutUs__card__2">
           <div className="aboutUs_card_text">
-            <h3 className="aboutUs__card__text__title">inspeção com drones</h3>
+            <h3 className="aboutUs__card__text__title">
+              inspeção de qualidade
+            </h3>
             <p className="aboutUs__card__text__subtitle">
-              Nossa missão é ajudar as empresas a reduzirem custos e aumentarem
-              a segurança de seus funcionários.
+              A inspeção de segurança em canteiro de obras com uso de drones e
+              dispositivos móveis fornece informações em tempo hábil das
+              situações de risco e condições inseguras, de modo a dar celeridade
+              ao processo de tomada de decisão para correções imediatas, ações
+              corretivas e preventivas. O módulo segurança do sistema Smart
+              Inspecs tem como premissa inspecionar requisitos de segurança
+              especificados pelas normas regulamentadoras de segurança do
+              trabalho voltadas à construção civil (ex. NR18 e NR35), sendo
+              capaz de monitorar grandes áreas e de difícil acesso, com
+              diferentes perspectivas e em reduzido tempo.
             </p>
           </div>
-          <img src={imgSample} alt="imagem temporária" />
+          <img src={qualidade} alt="inspeção de qualidade" />
         </div>
       </div>
+      <div className="division" id="nossas">
+        <hr />
+        <span>Parceiros</span>
+        <hr />
+      </div>
+      <ul className="partners">
+        <li>
+          <img src={mrv} alt="MRV construtora" />
+        </li>
+        <li>
+          <img src={cnpq} alt="CNPQ" />
+        </li>
+        <li>
+          <img src={capes} alt="CAPES" />
+        </li>
+        <li>
+          <img src={fapesb} alt="FAPESB" />
+        </li>
+        <li>
+          <img src={fep} alt="FEP" />
+        </li>
+      </ul>
     </Container>
   );
 };
