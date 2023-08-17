@@ -52,7 +52,7 @@ export const Container = styled.div`
         font-weight: var(--font-weight-1);
     }
 
-    nav > button{
+    nav > button, footer > button{
         background-color: var(--primary-color);
         border: 2px solid var(--primary-color);
         padding: 0.5rem 1.75rem;
@@ -256,4 +256,38 @@ export const Container = styled.div`
         height: auto;
     }
 
+    footer{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2.75rem;
+    }
+
+    footer > ul {
+        display: flex;
+        gap: 50px;
+    }
+
+    footer > ul > li{
+        list-style: none;
+        border-bottom: 4px solid transparent;
+        padding: 0px 4px;
+    }
+
+    footer > ul > li:hover{
+        border-bottom: 4px solid var(--green-destaque);
+        transition: 0.5s ease;
+    }
+
+    .copy{
+        text-align: center;
+        margin-top: 6rem;
+        padding-bottom: 1rem;
+    }
+    
+    .division-last{
+        border: 3px solid var(--green-destaque);
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
 `

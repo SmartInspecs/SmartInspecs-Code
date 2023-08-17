@@ -25,7 +25,7 @@ const LandingContent = () => {
             <Link to="#nossas">Nossas soluções</Link>
           </li>
           <li>
-            <Link to="/">Sobre nós</Link>
+            <Link to="#about">Sobre nós</Link>
           </li>
         </ul>
         <button>login</button>
@@ -56,7 +56,7 @@ const LandingContent = () => {
         <span>nossas soluções</span>
         <hr />
       </div>
-      <ul className="solutions">
+      <ul className="solutions" id="about">
         <li className="solutions__cards">
           <img src={icon1} alt="Drone inspecionando uma casa" />
           <span className="solutions__cards__title">
@@ -136,6 +136,23 @@ const LandingContent = () => {
           <img src={fep} alt="FEP" />
         </li>
       </ul>
+      <hr className="division-last" />
+      <footer>
+        <h2 className="logo">smart inspecs</h2>
+        <ul>
+          <li>
+            <Link to="#inicio">Início</Link>
+          </li>
+          <li>
+            <Link to="#nossas">Nossas soluções</Link>
+          </li>
+          <li>
+            <Link to="/">Sobre nós</Link>
+          </li>
+        </ul>
+        <button>Fale conosco</button>
+      </footer>
+      <p className="copy">Todos direitos reservados. GETEC UFBA.</p>
     </Container>
   );
 };
