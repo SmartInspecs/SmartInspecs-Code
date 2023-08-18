@@ -6,13 +6,19 @@ import icon2 from "../../assets/icon 2.png";
 import icon3 from "../../assets/icon3.png";
 import qualidade from "../../assets/qualidade.jpeg";
 import seguranca from "../../assets/seguranca.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import mrv from "../../assets/mrvlogo.png";
 import cnpq from "../../assets/CNPq_v2017_rgb.jpg";
 import capes from "../../assets/logo-original-capes.png";
 import fapesb from "../../assets/fapesb3.jpg";
 import fep from "../../assets/Fep-logo.png";
 const LandingContent = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/login");
+  };
+
   return (
     <Container>
       <nav>
@@ -28,7 +34,7 @@ const LandingContent = () => {
             <Link to="#about">Sobre nós</Link>
           </li>
         </ul>
-        <button>login</button>
+        <button onClick={() => handleClick()}>login</button>
       </nav>
       <div className="callToAction" id="inicio">
         <img
