@@ -1,11 +1,14 @@
 import React from "react";
-import { Container, WrapperForm } from "./style";
+import { Container } from "./style";
+import { LoginForm } from "../loginForm";
 
 const Login = () => {
   return (
     <Container>
       <h1 className="logo">smart inspecs</h1>
-      <WrapperForm></WrapperForm>
+      <div className="wrapper">
+        <LoginForm />
+      </div>
     </Container>
   );
 };
