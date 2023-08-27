@@ -1,6 +1,9 @@
 import { TextField, Button, Stack } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { StyledTitle } from "./style";
+import UserContext from "../../contexts/userContext";
+import { useContext } from "react";
+import { auth } from "../../services/firebaseConfig";
 
 //alterar para interfaces
 type FormValues = {
@@ -9,6 +12,8 @@ type FormValues = {
 };
 
 export const LoginForm = () => {
+  const { loginUser } = useContext(UserContext);
+
   const form = useForm<FormValues>({
     defaultValues: {
       email: "",
@@ -22,7 +27,7 @@ export const LoginForm = () => {
 
   const onSubmit = handleSubmit((data: FormValues, e) => {
     e?.preventDefault();
-    console.log(data);
+    loginUser(auth, data.email, data.password);
   });
 
   const customButtonStyle = {

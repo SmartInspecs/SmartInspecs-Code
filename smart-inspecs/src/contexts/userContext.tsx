@@ -1,35 +1,92 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState, createContext } from "react";
-import { auth } from "../services/firebaseConfig";
+import { createContext, useState, useEffect } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  Auth,
+  UserInfo as User,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
+import { iDefaultProviderProps } from "./@types";
 import { useNavigate } from "react-router-dom";
-import { FormValues } from "../components/loginForm";
+import { auth } from "../services/firebaseConfig";
 
-export const AuthContext = createContext({});
+const UserContext = createContext<any | null>(null);
 
-export const AuthProvider = ({ children }) => {
+export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<User[] | null>(null);
 
-  const signIn = (data: FormValues) => {
-    signInWithEmailAndPassword(auth, data.email, data.password)
+  useEffect(() => {
+    onAuthStateChanged(auth, (currUser) => {
+      if (currUser) {
+        setUser(currUser.providerData);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
+
+  const createUser = (auth: Auth, email: string, password: string) => {
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
-        const userSigned = userCredential.user;
-        setUser(userSigned);
-        console.log(user);
+        const user = userCredential.user;
+        localStorage.setItem(
+          "@Smart-Inspecs",
+          JSON.stringify(user.providerData)
+        );
+        setUser(user.providerData);
         navigate("/home");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.log(error.code, error.message);
+        //modal ERROR
       });
-    console.log(data);
+  };
+
+  const loginUser = (auth: Auth, email: string, password: string) => {
+    setPersistence(auth, browserSessionPersistence)
+      .then(() => {
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            localStorage.setItem(
+              "@Smart-Inspecs",
+              JSON.stringify(user.providerData)
+            );
+            setUser(user.providerData);
+            navigate("/home");
+          })
+          .catch((error) => {
+            console.log(error.code, error.message);
+            alert("Erro ao logar");
+          });
+      })
+      .catch((error) => {
+        console.log("Erro ao configurar a persistência:", error);
+      });
+  };
+
+  const logoutUser = (auth: Auth) => {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("@Smart-Inspecs");
+        setUser(null);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.code, error.message);
+        alert("Erro ao deslogar");
+      });
   };
 
   return (
-    <AuthContext.Provider value={{ user, signIn }}>
+    <UserContext.Provider value={{ createUser, loginUser, logoutUser, user }}>
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 };
+
+export default UserContext;

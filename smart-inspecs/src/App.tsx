@@ -2,12 +2,15 @@ import React from "react";
 import "./App.css";
 import GlobalStyle from "./styles/GlobalStyles";
 import RoutesMain from "./routes";
+import { UserContextProvider } from "./contexts/userContext";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <RoutesMain />
+      <UserContextProvider>
+        <GlobalStyle />
+        <RoutesMain />
+      </UserContextProvider>
     </>
   );
 }

@@ -112,9 +112,7 @@ const LandingContent = () => {
               corretivas e preventivas. O módulo segurança do sistema Smart
               Inspecs tem como premissa inspecionar requisitos de segurança
               especificados pelas normas regulamentadoras de segurança do
-              trabalho voltadas à construção civil (ex. NR18 e NR35), sendo
-              capaz de monitorar grandes áreas e de difícil acesso, com
-              diferentes perspectivas e em reduzido tempo.
+              trabalho voltadas à construção civil (ex. NR18 e NR35).
             </p>
           </div>
           <img src={qualidade} alt="inspeção de qualidade" />
