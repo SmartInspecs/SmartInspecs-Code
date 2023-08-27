@@ -18,14 +18,18 @@ const UserContext = createContext<any | null>(null);
 export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User[] | null>(null);
+  const [userReady, setUserReady] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currUser) => {
       if (currUser) {
         setUser(currUser.providerData);
+        console.log("User is signed in.");
       } else {
         setUser(null);
+        console.log("No user is signed in.");
       }
+      setUserReady(true);
     });
   }, []);
 
@@ -83,7 +87,9 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
   };
 
   return (
-    <UserContext.Provider value={{ createUser, loginUser, logoutUser, user }}>
+    <UserContext.Provider
+      value={{ createUser, loginUser, logoutUser, user, userReady }}
+    >
       {children}
     </UserContext.Provider>
   );
