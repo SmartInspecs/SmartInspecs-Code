@@ -1,6 +1,7 @@
 import React, { ReactNode, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import UserContext from "../../contexts/userContext";
+import Loading from "../loading";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -13,7 +14,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   if (!localUser) {
     return <Navigate to="/login" />;
   }
-  return <>{userReady ? children : <div> Loading... </div>}</>;
+  return <>{userReady ? children : <Loading />}</>;
 };
 
 export default ProtectedRoute;
