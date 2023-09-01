@@ -8,6 +8,7 @@ import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
 
 export type FormValues = {
+  nome: string;
   email: string;
   password: string;
   empresa: string;
@@ -16,6 +17,7 @@ export type FormValues = {
 export const RegisterForm = () => {
   const form = useForm<FormValues>({
     defaultValues: {
+      nome: "",
       email: "",
       password: "",
       empresa: "",
@@ -50,6 +52,15 @@ export const RegisterForm = () => {
             <Stack spacing={2} width={"90%"} fontFamily={"Poppins"}>
               <StyledTitle>Registro</StyledTitle>
               <TextField
+                label="Seu nome"
+                type="text"
+                {...register("nome", {
+                  required: "O seu é obrigatório",
+                })}
+                error={!!errors.nome}
+                helperText={errors.nome?.message}
+              />
+              <TextField
                 label="E-mail"
                 type="email"
                 {...register("email", {
@@ -73,8 +84,8 @@ export const RegisterForm = () => {
                 {...register("empresa", {
                   required: "O nome da empresa é obrigatório",
                 })}
-                error={!!errors.email}
-                helperText={errors.email?.message}
+                error={!!errors.empresa}
+                helperText={errors.empresa?.message}
               />
               <Button
                 type="submit"

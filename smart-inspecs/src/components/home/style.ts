@@ -37,6 +37,50 @@ const StyledMenu = styled.div`
         margin: 40px auto;
         width: 90%;
     }
+
+    .side-options {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap:20px;
+    }
+
+    .side-options > h3 {
+        font-size: 1.125rem;
+        font-weight: var(--font-weight-1);
+    }
+
+    .side-options > a {
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-top: 20px;
+        color: var(--color-grey-3);
+    }
+
+    .side-option {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    } 
+
+    .side-option > button {
+        width: 80%;
+        height: 50px;
+        cursor: pointer;
+        background-color: transparent;
+        border-radius: 8px;
+        border: 2px solid var(--primary-color);
+        font-size: 0.9rem;
+        font-weight: var(--font-weight-2);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .side-option > button:hover {
+        background-color: var(--primary-color);
+        color: var(--white);
+        transition: 0.3s ease;
+    }
 `;
 
 const StyledLogo = styled.h2`
