@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
 
-type FormValues = {
+export type FormValues = {
   email: string;
   password: string;
+  empresa: string;
 };
 
 export const RegisterForm = () => {
@@ -17,6 +18,7 @@ export const RegisterForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      empresa: "",
     },
   });
 
@@ -28,7 +30,7 @@ export const RegisterForm = () => {
 
   const onSubmit = handleSubmit((data: FormValues, e) => {
     e?.preventDefault();
-    createUser(auth, data.email, data.password);
+    createUser(auth, data);
   });
 
   const customButtonStyle = {
@@ -65,13 +67,22 @@ export const RegisterForm = () => {
                 error={!!errors.password}
                 helperText={errors.password?.message}
               />
+              <TextField
+                label="Empresa"
+                type="text"
+                {...register("empresa", {
+                  required: "O nome da empresa é obrigatório",
+                })}
+                error={!!errors.email}
+                helperText={errors.email?.message}
+              />
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 style={customButtonStyle}
               >
-                Login
+                Registrar
               </Button>
               <Link to="/login">Ir para login</Link>
             </Stack>

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
-import { Container, Menu } from "./style";
+import { Container } from "./style";
+import MenuSidebar from "./menu";
 
 const Home = () => {
   const { user, logoutUser } = useContext(UserContext);
@@ -10,13 +11,14 @@ const Home = () => {
 
   return (
     <Container>
-      <Menu>
-        <p>{user ? "existe" : "não existe"}</p>
-        <p>username: {user ? user[0].email : "carregando..."}</p>
-        <button onClick={() => logoutUser(auth)}>Logout</button>
-      </Menu>
-      <div>
-        <h1>Home</h1>
+      <MenuSidebar />
+      <div className="dash">
+        <header>
+          <h2>
+            Bem vindo, <span>{user[0].email}!</span>
+          </h2>
+          <button onClick={() => logoutUser(auth)}>Logout</button>
+        </header>
       </div>
     </Container>
   );

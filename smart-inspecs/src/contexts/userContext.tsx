@@ -9,9 +9,11 @@ import {
   setPersistence,
   browserSessionPersistence,
 } from "firebase/auth";
+import { FormValues } from "../components/register/index";
 import { iDefaultProviderProps } from "./@types";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../services/firebaseConfig";
+import { auth, db } from "../services/firebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 
 const UserContext = createContext<any | null>(null);
 
@@ -33,8 +35,18 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
     });
   }, []);
 
-  const createUser = (auth: Auth, email: string, password: string) => {
-    createUserWithEmailAndPassword(auth, email, password)
+  const createUserDb = (userId: User, email: string, empresa: string) => {
+    setDoc(doc(db, "users", userId.uid), { email, empresa, adm: true }) //adm: true -> registro exclusivos do admin
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
+  };
+
+  const createUser = (auth: Auth, data: FormValues) => {
+    createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
         localStorage.setItem(
@@ -42,6 +54,7 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
           JSON.stringify(user.providerData)
         );
         setUser(user.providerData);
+        createUserDb(user, data.email, data.empresa);
         navigate("/home");
       })
       .catch((error) => {
