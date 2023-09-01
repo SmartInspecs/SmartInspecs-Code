@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../services/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 
+// isso é uma alteração
 const UserContext = createContext<any | null>(null);
 
 export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
