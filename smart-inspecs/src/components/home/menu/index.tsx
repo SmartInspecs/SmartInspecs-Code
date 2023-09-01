@@ -10,7 +10,7 @@ const MenuSidebar = () => {
         <div className="side-options">
           <h3>Home</h3>
           <div className="side-option">
-            <button>início</button>
+            <button>Início</button>
           </div>
           <h3>Inspeções</h3>
           <div className="side-option">

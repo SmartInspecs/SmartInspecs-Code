@@ -5,7 +5,7 @@ import { Container } from "./style";
 import MenuSidebar from "./menu";
 
 const Home = () => {
-  const { user, logoutUser } = useContext(UserContext);
+  const { userDb, logoutUser } = useContext(UserContext);
 
   // const localUser = JSON.parse(localStorage.getItem("@Smart-Inspecs") || "{}");
 
@@ -15,7 +15,8 @@ const Home = () => {
       <div className="dash">
         <header>
           <h2>
-            Bem vindo, <span>{user[0].email}!</span>
+            Bem vindo,{" "}
+            <span>{userDb ? userDb.name.split(" ")[0] : "Carregando..."}!</span>
           </h2>
           <button onClick={() => logoutUser(auth)}>Logout</button>
         </header>
