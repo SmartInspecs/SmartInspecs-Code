@@ -1,6 +1,7 @@
 import React from "react";
 import { StyledMenu, StyledLogo } from "../style";
 import { Link } from "react-router-dom";
+// import icon_house from "../../../assets/icon_house.png";
 
 const MenuSidebar = () => {
   return (

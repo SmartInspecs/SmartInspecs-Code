@@ -3,6 +3,7 @@ import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
 import { Container } from "./style";
 import MenuSidebar from "./menu";
+import DashContentAdm from "./dash-content";
 
 const Home = () => {
   const { userDb, logoutUser } = useContext(UserContext);
@@ -20,6 +21,7 @@ const Home = () => {
           </h2>
           <button onClick={() => logoutUser(auth)}>Logout</button>
         </header>
+        <DashContentAdm />
       </div>
     </Container>
   );
