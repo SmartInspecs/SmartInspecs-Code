@@ -24,7 +24,7 @@ const MenuSidebar = () => {
           <div className="side-option">
             <button>Acessar relatórios</button>
           </div>
-          <h3>minha empresa</h3>
+          <h3>Minha Empresa</h3>
           <div className="side-option">
             <button>Dashboard empresa</button>
           </div>

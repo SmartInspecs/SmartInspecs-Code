@@ -31,6 +31,7 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
   const [user, setUser] = useState<User[] | null>(null);
   const [userDb, setUserDb] = useState<DocumentData | null>(null); // [0] -> userDb[0]
   const [userReady, setUserReady] = useState<boolean>(false);
+  // const [obras, setObras] = useState<DocumentData | null>(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currUser) => {
@@ -38,17 +39,41 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
         //colocando usuário no estado user
         setUser(currUser.providerData);
         const userEmail = currUser.email;
+
         //buscando as informcações do usuário no banco de dados
         const usersCollection = collection(db, "users");
         const q = query(usersCollection, where("email", "==", userEmail));
+
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const querySnapshot = getDocs(q).then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             //colocando as informações do usuário (do banco de dados) no estado userDb
             setUserDb(doc.data());
+            // const empresasCollection = collection(db, "empresas");
+            // const q2 = query(
+            //   empresasCollection,
+            //   where("nome", "==", doc.data().empresa)
+            // );
+            // getDocs(q2).then((querySnapshot) => {
+            //   querySnapshot.forEach((doc) => {
+            //     // const obrasCollection = collection(
+            //     //   db,
+            //     //   "empresas",
+            //     //   doc.id,
+            //     //   "obras"
+            //     // );
+            //     // getDocs(obrasCollection).then((querySnapshot2) => {
+            //     //   querySnapshot2.forEach((doc) => {
+            //     //     setObras(doc.data());
+            //     //     console.log(doc.data());
+            //     //   });
+            //     // });
+            //   });
+            // });
           });
           setUserReady(true);
         });
+
         console.log("User is signed in.");
       } else {
         setUser(null);

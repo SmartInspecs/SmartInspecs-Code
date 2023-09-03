@@ -49,6 +49,7 @@ const StyledMenu = styled.div`
     .side-options > h3 {
         font-size: 1.125rem;
         font-weight: var(--font-weight-1);
+        margin-top:20px;
     }
 
     .side-options > a {
