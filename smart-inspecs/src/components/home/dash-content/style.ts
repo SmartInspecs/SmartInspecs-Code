@@ -17,7 +17,17 @@ export const DashContent = styled.div`
         gap: 1.5rem;
     }
 
+    .dash-obras{
+        margin-top: 32px;
+    }
+
     .dash-content-box{
         height: 180px;
+    }
+
+    .obras-wrapper{
+        background-color: var(--color-grey-0);
+        margin-top: 1rem;
+        padding: 16px;
     }
 `

@@ -90,12 +90,14 @@ const LandingContent = () => {
               inspeção de segurança
             </h3>
             <p className="aboutUs__card__text__subtitle">
-              A inspeção automatizada de fachadas e telhados por meio de drones
-              e algoritmos de inteligência artificial é uma abordagem inovadora
-              e eficiente para avaliar a condição estrutural e a integridade de
-              edifícios e outras estruturas. Essa combinação de tecnologias
-              permite realizar inspeções com mais celeridade, precisão e
-              segurança em comparação com os métodos tradicionais.
+              A inspeção de segurança em canteiro de obras com uso de drones e
+              dispositivos móveis fornece informações em tempo hábil das
+              situações de risco e condições inseguras, de modo a dar celeridade
+              ao processo de tomada de decisão para correções imediatas, ações
+              corretivas e preventivas. O módulo segurança do sistema Smart
+              Inspecs tem como premissa inspecionar requisitos de segurança
+              especificados pelas normas regulamentadoras de segurança do
+              trabalho voltadas à construção civil (ex. NR18 e NR35).
             </p>
           </div>
         </div>
@@ -105,14 +107,12 @@ const LandingContent = () => {
               inspeção de qualidade
             </h3>
             <p className="aboutUs__card__text__subtitle">
-              A inspeção de segurança em canteiro de obras com uso de drones e
-              dispositivos móveis fornece informações em tempo hábil das
-              situações de risco e condições inseguras, de modo a dar celeridade
-              ao processo de tomada de decisão para correções imediatas, ações
-              corretivas e preventivas. O módulo segurança do sistema Smart
-              Inspecs tem como premissa inspecionar requisitos de segurança
-              especificados pelas normas regulamentadoras de segurança do
-              trabalho voltadas à construção civil (ex. NR18 e NR35).
+              A inspeção automatizada de fachadas e telhados por meio de drones
+              e algoritmos de inteligência artificial é uma abordagem inovadora
+              e eficiente para avaliar a condição estrutural e a integridade de
+              edifícios e outras estruturas. Essa combinação de tecnologias
+              permite realizar inspeções com mais celeridade, precisão e
+              segurança em comparação com os métodos tradicionais.
             </p>
           </div>
           <img src={qualidade} alt="inspeção de qualidade" />

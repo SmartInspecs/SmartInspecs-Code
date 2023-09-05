@@ -1,5 +1,6 @@
 import React from "react";
 import { DashContent } from "./style";
+import ObraCard from "../obraCard";
 
 const DashContentAdm = () => {
   return (
@@ -14,18 +15,11 @@ const DashContentAdm = () => {
           <button className="dash-content-box">Dashboard empresa</button>
         </div>
       </div>
-      <div className="dash-content-obras">
-        <h3>Minhas obras</h3>
+      <div className="dash-obras">
+        <h3 className="section-title">Minhas obras</h3>
         <div className="dash-content-obras">
-          <ul>
-            <li className="dash-content-obras-box">
-              <div className="img"></div>
-              <p>Obra 1</p>
-              <div className="buttons">
-                <button>Saiba mais</button>
-                <button>Editar</button>
-              </div>
-            </li>
+          <ul className="obras-wrapper">
+            <ObraCard />
           </ul>
         </div>
       </div>
