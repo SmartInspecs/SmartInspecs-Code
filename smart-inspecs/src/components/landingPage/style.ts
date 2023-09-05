@@ -6,6 +6,7 @@ export const Container = styled.div`
     margin: 0 auto;
     height: 100vh;
 
+
     nav{
         display: flex;
         justify-content: space-between;
