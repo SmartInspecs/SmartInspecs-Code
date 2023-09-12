@@ -26,8 +26,12 @@ export const DashContent = styled.div`
     }
 
     .obras-wrapper{
+        display: flex;
+        overflow-x: scroll;
+        gap: 24px;
         background-color: var(--color-grey-0);
         margin-top: 1rem;
         padding: 16px;
+        border-radius: 8px;
     }
 `

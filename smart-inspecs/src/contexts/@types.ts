@@ -10,5 +10,6 @@ export interface iUserContext{
   loginUser: void | null, 
   logoutUser: Promise<void>, 
   user: UserInfo[] | null
-  userDb: DocumentData | null
+  userDb: DocumentData | null,
+  getObras: Promise<void> | null,
 }

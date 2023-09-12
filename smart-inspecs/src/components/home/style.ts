@@ -6,8 +6,9 @@ const Container = styled.div`
     display: flex;
 
     .dash{
-        margin: 40px;
+        margin: 40px auto;
         width: 100%;
+        max-width: 1440px;
     }
 
     .dash > header{

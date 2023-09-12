@@ -1,14 +1,26 @@
 import React from "react";
 import { Card } from "./style";
 
-const ObraCard = () => {
+interface iObraCardProps {
+  key: number;
+  obra: {
+    nome: string;
+    endereço: string;
+    inspecoes: string;
+  };
+}
+
+const ObraCard = ({ obra }: iObraCardProps) => {
   return (
     <Card>
       <div className="img"></div>
-      <p>Obra 1</p>
-      <div className="buttons">
-        <button>Saiba mais</button>
-        <button>Editar</button>
+      <div className="bottom-card">
+        <p>{obra.nome}</p>
+        <div className="buttons">
+          <button className="primary-button">Saiba mais</button>
+          <button className="secondary-button">Editar</button>
+        </div>
+        <span className="bottom-card-edit">Última edição: xx/yy/zzzz</span>
       </div>
     </Card>
   );

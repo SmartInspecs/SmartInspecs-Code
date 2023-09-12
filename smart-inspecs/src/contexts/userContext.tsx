@@ -23,7 +23,7 @@ import {
   where,
 } from "firebase/firestore";
 
-// isso é uma alteração
+// Consertar tipos
 const UserContext = createContext<any | null>(null);
 
 export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
@@ -38,7 +38,6 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
         //colocando usuário no estado user
         setUser(currUser.providerData);
         const userEmail = currUser.email;
-
         //buscando as informcações do usuário no banco de dados
         const usersCollection = collection(db, "users");
         const q = query(usersCollection, where("email", "==", userEmail));
@@ -132,7 +131,14 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
 
   return (
     <UserContext.Provider
-      value={{ createUser, loginUser, logoutUser, user, userReady, userDb }}
+      value={{
+        createUser,
+        loginUser,
+        logoutUser,
+        user,
+        userReady,
+        userDb,
+      }}
     >
       {children}
     </UserContext.Provider>
