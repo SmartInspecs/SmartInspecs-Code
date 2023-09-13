@@ -13,3 +13,10 @@ export interface iUserContext{
   userDb: DocumentData | null,
   getObras: Promise<void> | null,
 }
+
+export interface iNovaObra{
+  nome: string,
+  endereco: string,
+  imgUrl: string,
+  inspecoes: string[]
+}

@@ -6,14 +6,19 @@ interface iObraCardProps {
   obra: {
     nome: string;
     endereço: string;
-    inspecoes: string;
+    inspecoes: [];
+    imgUrl: string;
   };
 }
 
 const ObraCard = ({ obra }: iObraCardProps) => {
   return (
     <Card>
-      <div className="img"></div>
+      {obra.imgUrl ? (
+        <img src={obra.imgUrl} alt="Imagem da obra" />
+      ) : (
+        <div className="img"></div>
+      )}
       <div className="bottom-card">
         <p>{obra.nome}</p>
         <div className="buttons">

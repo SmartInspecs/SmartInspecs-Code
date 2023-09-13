@@ -9,7 +9,7 @@ import ModalCriarObra from "../modalCriarObra";
 
 const Home = () => {
   const { userDb, logoutUser } = useContext(UserContext);
-  const { modalOpen, setModalOpen } = useContext(ObrasContexts);
+  const { modalOpen } = useContext(ObrasContexts);
   // const localUser = JSON.parse(localStorage.getItem("@Smart-Inspecs") || "{}");
   // para captar o usuário logado na plataforma use userDb.nome
 

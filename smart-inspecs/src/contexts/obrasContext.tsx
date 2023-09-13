@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { iDefaultProviderProps } from "./@types";
+import { iDefaultProviderProps, iNovaObra } from "./@types";
 import {
   Firestore,
   addDoc,
@@ -51,17 +51,16 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
     });
   };
 
-  const addObras = (novaObra: any) => {
-    console.log(novaObra);
-    // try {
-    //   const empresaId = empresa?.id;
-    //   if (empresaId) {
-    //     const obraRef = collection(db, "empresas", empresaId, "obras");
-    //     await addDoc(obraRef, novaObra);
-    //   }
-    // } catch (error) {
-    //   console.error("Erro ao adicionar obra:", error);
-    // }
+  const addObras = async (novaObra: iNovaObra) => {
+    try {
+      const empresaId = empresa?.id;
+      if (empresaId) {
+        const obraRef = collection(db, "empresas", empresaId, "obras");
+        await addDoc(obraRef, novaObra);
+      }
+    } catch (error) {
+      console.error("Erro ao adicionar obra:", error);
+    }
   };
 
   return (

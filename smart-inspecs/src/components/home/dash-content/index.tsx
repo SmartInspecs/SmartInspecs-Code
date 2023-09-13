@@ -4,12 +4,7 @@ import ObraCard from "../obraCard";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 
 const DashContentAdm = () => {
-  const { obras, loadingObra, addObras, setModalOpen } =
-    useContext(ObrasContexts);
-  const handleClick = () => {
-    setModalOpen(true);
-    addObras({ name: "teste", endereço: "teste", inspecoes: "teste" });
-  };
+  const { obras, loadingObra, setModalOpen } = useContext(ObrasContexts);
 
   return (
     <DashContent>
@@ -17,7 +12,10 @@ const DashContentAdm = () => {
       <div className="dash-content-box-area">
         <h3 className="section-title">Gerenciamento</h3>
         <div className="dash-content-boxes">
-          <button className="dash-content-box" onClick={() => handleClick()}>
+          <button
+            className="dash-content-box"
+            onClick={() => setModalOpen(true)}
+          >
             Cadastrar nova obra
           </button>
           <button className="dash-content-box">Gerenciar usuários</button>
@@ -34,7 +32,12 @@ const DashContentAdm = () => {
             ) : (
               obras?.map(
                 (
-                  obra: { nome: string; endereço: string; inspecoes: string },
+                  obra: {
+                    nome: string;
+                    endereço: string;
+                    inspecoes: [];
+                    imgUrl: string;
+                  },
                   index: number
                 ) => <ObraCard obra={obra} key={index} />
               )

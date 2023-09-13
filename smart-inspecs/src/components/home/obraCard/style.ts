@@ -10,6 +10,9 @@ export const Card = styled.li`
     gap: 12px;
     border-radius: 8px;
 
+    img{
+        height: 178px;
+    }
     .img{
         width: 90%;
         height: 178px;
