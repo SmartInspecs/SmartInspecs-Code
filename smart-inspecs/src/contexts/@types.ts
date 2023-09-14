@@ -12,6 +12,7 @@ export interface iUserContext{
   user: UserInfo[] | null
   userDb: DocumentData | null,
   getObras: Promise<void> | null,
+  obraSelected: iNovaObra | null;
 }
 
 export interface iNovaObra{
@@ -19,4 +20,13 @@ export interface iNovaObra{
   endereco: string,
   imgUrl: string,
   inspecoes: string[]
+}
+
+export interface iObraCardProps {
+  obra: {
+    nome: string;
+    endereço: string;
+    inspecoes: [];
+    imgUrl: string;
+  };
 }

@@ -12,9 +12,12 @@ export const Card = styled.li`
 
     img{
         height: 178px;
+        width: 178px;
+        object-fit: cover;
     }
+    
     .img{
-        width: 90%;
+        width: 178px;
         height: 178px;
         background-color: var(--color-grey-3);
         border-radius: 8px;
@@ -23,7 +26,7 @@ export const Card = styled.li`
     .bottom-card{
         display: flex;
         flex-direction: column;
-        width: 90%;
+        width: 100%;
         gap: 12px;
     }
 

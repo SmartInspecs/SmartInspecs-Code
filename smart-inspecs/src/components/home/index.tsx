@@ -6,16 +6,18 @@ import MenuSidebar from "./menu";
 import DashContentAdm from "./dash-content";
 import { ObrasContexts } from "../../contexts/obrasContext";
 import ModalCriarObra from "../modalCriarObra";
+import ModalObra from "./modalObra";
 
 const Home = () => {
   const { userDb, logoutUser } = useContext(UserContext);
-  const { modalOpen } = useContext(ObrasContexts);
+  const { modalOpen, modalObra } = useContext(ObrasContexts);
   // const localUser = JSON.parse(localStorage.getItem("@Smart-Inspecs") || "{}");
-  // para captar o usuário logado na plataforma use userDb.nome
+  // para captar o usuário logado na plataforma use userDb.name
 
   return (
     <>
       {modalOpen ? <ModalCriarObra /> : false}
+      {modalObra ? <ModalObra /> : false}
       <Container>
         <MenuSidebar />
         <div className="dash">

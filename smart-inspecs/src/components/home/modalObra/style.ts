@@ -16,8 +16,8 @@ export const StyledModalWrapper = styled.div`
         background-color: var(--white);
         display: flex;
         flex-direction: column;
-        border-radius: 1rem;
         padding: 1rem;
+        border-radius: 16px;
     }
 
     .modal-box-header{
@@ -33,12 +33,13 @@ export const StyledModalWrapper = styled.div`
     
     .modal-box-content{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         padding: 1rem;
+        gap: 24px;
     }
 
-    .modal-box-content > form{
+    /* .modal-box-content > form{
         width: 95%;
         display: flex;
         flex-direction: column;
@@ -49,22 +50,21 @@ export const StyledModalWrapper = styled.div`
     progress{
         width: 100%;
         color: var(--primary-color);
+    } */
+
+    .modal-box-content-img{
+        width: 60%;
+    }
+
+    .modal-box-content-info{
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .img-modal{
+        width: 100%;
+        height: 40%;
+        object-fit: cover;
     }
 `
-
-export const customButtonStyle = {
-    backgroundColor: "#006400",
-    color: "white",
-    padding: "10px",
-    fontWeight: "600",
-    fontSize: "24px",
-  };
-
-  export const customButtonStyleSecondary = {
-    backgroundColor: "#fff",
-    color: "#006400",
-    border: "1px solid #006400",
-    padding: "10px",
-    fontWeight: "600",
-    fontSize: "24px",
-  };

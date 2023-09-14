@@ -18,6 +18,9 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
   const [obras, setObras] = useState<any[] | null>(null);
   const [loadingObra, setLoadingObra] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+  const [obraSelected, setObraSelected] = useState<iNovaObra | null>(null); // [TODO] - Criar contexto para obra selecionada
+  const [modalObra, setModalObra] = useState(false);
+
   const { userDb } = useContext(UserContext);
 
   useEffect(() => {
@@ -65,7 +68,18 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
 
   return (
     <ObrasContexts.Provider
-      value={{ empresa, obras, addObras, loadingObra, modalOpen, setModalOpen }}
+      value={{
+        empresa,
+        obras,
+        addObras,
+        loadingObra,
+        modalOpen,
+        setModalOpen,
+        setObraSelected,
+        obraSelected,
+        modalObra,
+        setModalObra,
+      }}
     >
       {children}
     </ObrasContexts.Provider>
