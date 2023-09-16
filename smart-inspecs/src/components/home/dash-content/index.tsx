@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { DashContent } from "./style";
 import ObraCard from "../obraCard";
 import { ObrasContexts } from "../../../contexts/obrasContext";
+import iconCadastrar from "../../../assets/icons-home/cadastrar_obra.png";
+import iconGerenciar from "../../../assets/icons-home/gerenciar_usuarios.png";
+import iconDashboard from "../../../assets/icons-home/dashboard_empresa.png";
+import iconAlterar from "../../../assets/icons-home/alterar_dados.png";
 
 const DashContentAdm = () => {
   const { obras, loadingObra, setModalOpen } = useContext(ObrasContexts);
@@ -16,11 +20,21 @@ const DashContentAdm = () => {
             className="dash-content-box"
             onClick={() => setModalOpen(true)}
           >
-            Cadastrar nova obra
+            <img src={iconCadastrar} alt= " Um caminhão de construção civil com um sinal de mais"/>
+            <span>Cadastrar nova obra</span>
           </button>
-          <button className="dash-content-box">Gerenciar usuários</button>
-          <button className="dash-content-box">Alterar dados</button>
-          <button className="dash-content-box">Dashboard empresa</button>
+          <button className="dash-content-box">
+            <img src={iconGerenciar} alt= "Dois trabalhadores com capacete de segurança"/>
+            <span>Gerenciar usuários</span>
+          </button>
+          <button className="dash-content-box">
+            <img src={iconAlterar} alt= "Lápis sobre um papel "/>
+            <span>Alterar dados</span>
+          </button>
+          <button className="dash-content-box">
+            <img src={iconDashboard} alt= "Gráfico em barras verticais"/>
+            <span>Dashboard empresa</span>
+          </button>
         </div>
       </div>
       <div className="dash-obras">

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledMenu, StyledLogo } from "../style";
 import { Link } from "react-router-dom";
-// import icon_house from "../../../assets/icon_house.png";
+import icon_house from "../../../assets/icons-home/icon_house.png";
 
 const MenuSidebar = () => {
   return (
@@ -11,7 +11,10 @@ const MenuSidebar = () => {
         <div className="side-options">
           <h3>Home</h3>
           <div className="side-option">
-            <button>Início</button>
+            <button className="side-option-buttom">
+              <img src={icon_house} alt="Uma casa"/>
+              <span>Início</span>
+            </button>
           </div>
           <h3>Inspeções</h3>
           <div className="side-option">

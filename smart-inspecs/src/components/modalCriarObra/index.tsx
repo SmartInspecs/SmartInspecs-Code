@@ -72,7 +72,7 @@ const ModalCriarObra = () => {
       <div className="modal-box">
         <div className="modal-box-header">
           <h3 className="modal-title">Criar nova obra</h3>
-          <button onClick={() => setModalOpen(false)}>X</button>
+          <button className="modal-button" onClick={() => setModalOpen(false)}>X</button>
         </div>
         <div className="modal-box-content">
           <form noValidate onSubmit={onSubmit}>

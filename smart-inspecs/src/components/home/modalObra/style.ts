@@ -18,6 +18,7 @@ export const StyledModalWrapper = styled.div`
         flex-direction: column;
         padding: 1rem;
         border-radius: 16px;
+        
     }
 
     .modal-box-header{
@@ -30,6 +31,7 @@ export const StyledModalWrapper = styled.div`
     .modal-title{
         font-weight: var(--font-weight-1);
     }
+    
     
     .modal-box-content{
         display: flex;
