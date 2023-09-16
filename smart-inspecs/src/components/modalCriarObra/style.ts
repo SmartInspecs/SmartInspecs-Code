@@ -30,7 +30,20 @@ export const StyledModalWrapper = styled.div`
     .modal-title{
         font-weight: var(--font-weight-1);
     }
+
+    .modal-button{
+        border: none;
+        background-color:transparent;
+        cursor:pointer;
+        font-size:1rem;
+        font-weight: var(--font-weight-1);
+        transition: transform 0.3s ease;
+    }
     
+    .modal-button:hover{
+        transform:scale(1.5);
+    }
+
     .modal-box-content{
         display: flex;
         flex-direction: column;

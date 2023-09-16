@@ -46,6 +46,12 @@ const StyledMenu = styled.div`
         width: 100%;
         gap:20px;
     }
+    .side-option-buttom{
+        display:flex;
+        align-items:center;
+        gap:1rem;
+        padding-left:1rem;
+    }
 
     .side-options > h3 {
         font-size: 1.125rem;
