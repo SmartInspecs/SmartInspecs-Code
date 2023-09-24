@@ -7,7 +7,7 @@ interface iObraCardProps {
     nome: string;
     endereço: string;
     inspecoes: [];
-    imgUrl: string;
+    url: string;
   };
 }
 
@@ -17,12 +17,14 @@ const ObraCard = ({ obra }: iObraCardProps) => {
   const handleClick = () => {
     setObraSelected(obra);
     setModalObra(true);
+    localStorage.setItem("@Smart-Inspecs:obraSelected", JSON.stringify(obra));
   };
+  console.log(obra);
 
   return (
     <Card>
-      {obra.imgUrl ? (
-        <img src={obra.imgUrl} alt="Imagem da obra" />
+      {obra.url ? (
+        <img src={obra.url} alt="Imagem da obra" />
       ) : (
         <div className="img"></div>
       )}

@@ -6,6 +6,9 @@ import RegisterPage from "../pages/registerPage";
 import Home from "../components/home";
 import ProtectedRoute from "../components/protectedRoute";
 import NotFoundPage from "../pages/notFoundPage";
+import { WorkingInProgress } from "../pages/workingInProgress";
+import DashContentAdm from "../components/home/dash-content";
+import ObraSelected from "../components/home/obraSelect";
 
 const RoutesMain = () => {
   return (
@@ -20,7 +23,11 @@ const RoutesMain = () => {
             <Home />
           </ProtectedRoute>
         }
-      />
+      >
+        <Route index element={<DashContentAdm />} />
+        <Route path="obra" element={<ObraSelected />} />
+      </Route>
+      <Route path="/working-progress" element={<WorkingInProgress />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

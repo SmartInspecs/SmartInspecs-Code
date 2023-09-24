@@ -15,6 +15,10 @@ export interface iUserContext{
   obraSelected: iNovaObra | null;
 }
 
+export interface iObrasContext{
+  
+}
+
 export interface iNovaObra{
   nome: string,
   endereco: string,

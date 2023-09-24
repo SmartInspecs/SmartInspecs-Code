@@ -7,6 +7,7 @@ import DashContentAdm from "./dash-content";
 import { ObrasContexts } from "../../contexts/obrasContext";
 import ModalCriarObra from "../modalCriarObra";
 import ModalObra from "./modalObra";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { userDb, logoutUser } = useContext(UserContext);
@@ -27,7 +28,7 @@ const Home = () => {
             </h2>
             <button onClick={() => logoutUser(auth)}>Logout</button>
           </header>
-          <DashContentAdm />
+          <Outlet />
         </div>
       </Container>
     </>

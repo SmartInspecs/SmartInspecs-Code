@@ -34,10 +34,13 @@ export const DashContent = styled.div`
         align-items: center;
         justify-content:center;
         
-        
+        span{
+            font-weight: var(--font-weight-2);
+            font-size: 1rem;
+            font-family: 'Poppins';
+        }
     }
    
-
     .obras-wrapper{
         background-color: var(--color-grey-0);
         border-radius: 8px;

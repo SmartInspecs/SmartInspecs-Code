@@ -6,9 +6,15 @@ import iconCadastrar from "../../../assets/icons-home/cadastrar_obra.png";
 import iconGerenciar from "../../../assets/icons-home/gerenciar_usuarios.png";
 import iconDashboard from "../../../assets/icons-home/dashboard_empresa.png";
 import iconAlterar from "../../../assets/icons-home/alterar_dados.png";
+import { useNavigate } from "react-router-dom";
 
 const DashContentAdm = () => {
   const { obras, loadingObra, setModalOpen } = useContext(ObrasContexts);
+
+  const navigate = useNavigate();
+  const handleClickWorkInProgress = () => {
+    navigate("/working-progress");
+  };
 
   return (
     <DashContent>
@@ -20,19 +26,28 @@ const DashContentAdm = () => {
             className="dash-content-box"
             onClick={() => setModalOpen(true)}
           >
-            <img src={iconCadastrar} alt= " Um caminhão de construção civil com um sinal de mais"/>
+            <img
+              src={iconCadastrar}
+              alt=" Um caminhão de construção civil com um sinal de mais"
+            />
             <span>Cadastrar nova obra</span>
           </button>
           <button className="dash-content-box">
-            <img src={iconGerenciar} alt= "Dois trabalhadores com capacete de segurança"/>
+            <img
+              src={iconGerenciar}
+              alt="Dois trabalhadores com capacete de segurança"
+            />
             <span>Gerenciar usuários</span>
           </button>
           <button className="dash-content-box">
-            <img src={iconAlterar} alt= "Lápis sobre um papel "/>
-            <span>Alterar dados</span>
+            <img src={iconAlterar} alt="Lápis sobre um papel " />
+            <span>Alterar meus dados</span>
           </button>
-          <button className="dash-content-box">
-            <img src={iconDashboard} alt= "Gráfico em barras verticais"/>
+          <button
+            className="dash-content-box"
+            onClick={() => handleClickWorkInProgress()}
+          >
+            <img src={iconDashboard} alt="Gráfico em barras verticais" />
             <span>Dashboard empresa</span>
           </button>
         </div>
@@ -43,18 +58,20 @@ const DashContentAdm = () => {
           <ul className="obras-wrapper">
             {loadingObra ? (
               <p>carregando...</p>
-            ) : (
+            ) : obras?.length > 0 ? (
               obras?.map(
                 (
                   obra: {
                     nome: string;
                     endereço: string;
                     inspecoes: [];
-                    imgUrl: string;
+                    url: string;
                   },
                   index: number
                 ) => <ObraCard obra={obra} key={index} />
               )
+            ) : (
+              <p>Nenhuma obra cadastrada</p>
             )}
           </ul>
         </div>

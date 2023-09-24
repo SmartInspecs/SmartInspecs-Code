@@ -16,7 +16,7 @@ const ModalObra = () => {
         <div className="modal-box-content">
           <div className="modal-box-content-img">
             <img
-              src={obraSelected.imgUrl ? obraSelected.imgUrl : no_image}
+              src={obraSelected.url ? obraSelected.url : no_image}
               alt="Imagem da obra"
               className="img-modal"
             />
@@ -24,7 +24,7 @@ const ModalObra = () => {
           <div className="modal-box-content-info">
             <span>Nome: {obraSelected.nome}</span>
             <span>Endereço: {obraSelected.endereco}</span>
-            <Link to={"/"}>Acessar detalhe</Link>
+            <Link to={"/home/obra"}>Acessar detalhe</Link>
           </div>
         </div>
       </div>

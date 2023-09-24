@@ -1,9 +1,13 @@
 import React from "react";
 import { StyledMenu, StyledLogo } from "../style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import icon_house from "../../../assets/icons-home/icon_house.png";
 
 const MenuSidebar = () => {
+  const navigate = useNavigate();
+  const handleClickTo = (add: string) => {
+    navigate(`/${add}`);
+  };
   return (
     <StyledMenu>
       <div className="inner-container">
@@ -11,8 +15,11 @@ const MenuSidebar = () => {
         <div className="side-options">
           <h3>Home</h3>
           <div className="side-option">
-            <button className="side-option-buttom">
-              <img src={icon_house} alt="Uma casa"/>
+            <button
+              className="side-option-buttom"
+              onClick={() => handleClickTo("home")}
+            >
+              <img src={icon_house} alt="Uma casa" />
               <span>Início</span>
             </button>
           </div>
