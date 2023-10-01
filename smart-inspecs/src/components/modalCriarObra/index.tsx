@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { StyledModalWrapper, customButtonStyle } from "./style";
 import { ObrasContexts } from "../../contexts/obrasContext";
 import { Button, Stack, TextField } from "@mui/material";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../services/firebaseConfig";
+import { serverTimestamp } from "firebase/firestore";
 
 type FormValuesEmpresa = {
   nome: string;
@@ -71,7 +72,12 @@ const ModalCriarObra = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setImgUrl(url);
-          addObras({ ...data, url, inspecoes: [] });
+          addObras({
+            ...data,
+            url,
+            inspecoes: [],
+            timestamp: serverTimestamp(),
+          });
         });
       }
     );

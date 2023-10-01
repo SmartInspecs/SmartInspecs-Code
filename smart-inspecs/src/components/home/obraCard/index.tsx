@@ -19,7 +19,6 @@ const ObraCard = ({ obra }: iObraCardProps) => {
     setModalObra(true);
     localStorage.setItem("@Smart-Inspecs:obraSelected", JSON.stringify(obra));
   };
-  console.log(obra);
 
   return (
     <Card>

@@ -20,10 +20,19 @@ export interface iObrasContext{
 }
 
 export interface iNovaObra{
-  nome: string,
-  endereco: string,
-  imgUrl: string,
-  inspecoes: string[]
+  id: string;
+  nome: string;
+  endereco: string;
+  cep: string;
+  respTecnico: string;
+  respSegQual: string;
+  prazo: string;
+  princMetConst: string;
+  tiposEPCs: string;
+  area: string;
+  tipoObra: string;
+  inspecoes: [];
+  url: string;
 }
 
 export interface iObraCardProps {

@@ -4,8 +4,11 @@ import {
   Firestore,
   addDoc,
   collection,
+  doc,
   getDocs,
   query,
+  serverTimestamp,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import UserContext from "./userContext";
@@ -20,6 +23,7 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [obraSelected, setObraSelected] = useState<iNovaObra | null>(null); // [TODO] - Criar contexto para obra selecionada
   const [modalObra, setModalObra] = useState(false);
+  const [modalEditInfo, setModalEditInfo] = useState(false);
 
   const { userDb } = useContext(UserContext);
 
@@ -34,7 +38,7 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
             collection(db, "empresas", empresaId, "obras")
           );
           obrasSnapshot.forEach((doc) => {
-            obrasData.push(doc.data());
+            obrasData.push({ id: doc.id, ...doc.data() });
           });
           setObras(obrasData);
           setLoadingObra(false);
@@ -66,6 +70,35 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
+  const updateObra = async (obraId: string, obra: iNovaObra) => {
+    try {
+      const empresaId = empresa?.id;
+
+      if (empresaId) {
+        const obraRef = doc(
+          db,
+          `empresas/${empresaId.toString()}/obras/${obraId}`
+        );
+        await updateDoc(obraRef, {
+          nome: obra.nome,
+          cep: obra.cep || "",
+          respTecnico: obra.respTecnico || "",
+          respSegQual: obra.respSegQual || "",
+          prazo: obra.prazo || "",
+          princMetConst: obra.princMetConst || "",
+          tiposEPCs: obra.tiposEPCs || "",
+          area: obra.area || "",
+          tipoObra: obra.tipoObra || "",
+          updatedAt: serverTimestamp(),
+        });
+        console.log("Obra atualizada com sucesso!");
+        setModalEditInfo(false);
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar obra:", error);
+    }
+  };
+
   return (
     <ObrasContexts.Provider
       value={{
@@ -79,6 +112,9 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         obraSelected,
         modalObra,
         setModalObra,
+        setModalEditInfo,
+        modalEditInfo,
+        updateObra,
       }}
     >
       {children}

@@ -88,9 +88,21 @@ export const DashObraStyled = styled.div`
     }
 
     .important-info{
+        display: flex;
+        flex-direction: column;
         margin-top: 1rem;
         padding: 1rem;
         width: 80%;
+        gap: 0.5rem;
+    }
+
+    .warning{
+        background-color: red;
+        border-radius: 8px;
+        color: var(--white);
+        font-weight: var(--font-weight-2);
+        padding: 1rem;
+        gap: 1rem;
     }
 
     .important-info-list{

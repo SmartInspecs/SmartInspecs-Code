@@ -120,6 +120,7 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("@Smart-Inspecs");
+        localStorage.removeItem("@Smart-Inspecs:obraSelected");
         setUser(null);
         navigate("/");
       })
