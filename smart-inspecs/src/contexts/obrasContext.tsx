@@ -24,6 +24,8 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
   const [obraSelected, setObraSelected] = useState<iNovaObra | null>(null); // [TODO] - Criar contexto para obra selecionada
   const [modalObra, setModalObra] = useState(false);
   const [modalEditInfo, setModalEditInfo] = useState(false);
+  const [modalEditFunc, setModalEditFunc] = useState(false);
+  const [addFunc, setAddFunc] = useState(false);
 
   const { userDb } = useContext(UserContext);
 
@@ -99,6 +101,26 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
+  const updateWorkers = async (obraId: string, workers: any[]) => {
+    try {
+      const empresaId = empresa?.id;
+
+      if (empresaId) {
+        const obraRef = doc(
+          db,
+          `empresas/${empresaId.toString()}/obras/${obraId}`
+        );
+        await updateDoc(obraRef, {
+          funcionarios: workers,
+        });
+        console.log("Funcionário adicionado com sucesso!");
+        setModalEditInfo(false);
+      }
+    } catch (error) {
+      console.error("Erro ao atualizar obra:", error);
+    }
+  };
+
   return (
     <ObrasContexts.Provider
       value={{
@@ -115,6 +137,11 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         setModalEditInfo,
         modalEditInfo,
         updateObra,
+        updateWorkers,
+        modalEditFunc,
+        setModalEditFunc,
+        addFunc,
+        setAddFunc,
       }}
     >
       {children}

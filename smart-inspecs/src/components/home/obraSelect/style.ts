@@ -28,10 +28,10 @@ export const DashObraStyled = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
-        grid-template-areas: "box1 box1"
-        "box2 box3"
-        "box4 box4"
-        "box5 box6";
+        grid-template-areas: "box1 box2"
+        "box3 box4"
+        "box5 box6"
+        "box7 box8";
         width: 100%;
         gap:1rem;
         height:100%;
@@ -62,6 +62,12 @@ export const DashObraStyled = styled.div`
     .box6{
         grid-area: box6;
 
+    }
+    .box7{
+        grid-area: box7;
+    }
+    .box8{
+        grid-area: box8;
     }
 
     /* coluna 2 - direita */

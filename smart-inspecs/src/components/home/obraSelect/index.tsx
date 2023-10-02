@@ -3,6 +3,7 @@ import { DashObraStyled } from "./style";
 import no_image from "../../../assets/no_image.jpg";
 import ModalEditInfo from "../../modalEditInfo";
 import { ObrasContexts } from "../../../contexts/obrasContext";
+import ModalFuncionarios from "../../modalWorkers";
 
 export interface iObraSelected {
   id: string;
@@ -24,12 +25,14 @@ const ObraSelected = () => {
   const obraLocalStorage = localStorage.getItem("@Smart-Inspecs:obraSelected");
   const obraSelected: iObraSelected | null =
     obraLocalStorage && JSON.parse(obraLocalStorage);
-  const { modalEditInfo, setModalEditInfo } = useContext(ObrasContexts);
+  const { modalEditInfo, setModalEditInfo, modalEditFunc, setModalEditFunc } =
+    useContext(ObrasContexts);
   // adicionar nome da obra a url, de modo: home/obra/nomeobra
   //adicionar menu inspeções, e doc segurança
   return (
     <>
       {modalEditInfo && <ModalEditInfo />}
+      {modalEditFunc && <ModalFuncionarios />}
       <DashObraStyled>
         <span>home ➙ obras ➙ {obraSelected?.nome}</span>
         <div className="dash-content-box-area">
@@ -37,11 +40,15 @@ const ObraSelected = () => {
             <span className="section-title">Gerenciamento de obra</span>
             <div className="dash-content-boxes">
               <button className="box1">Agendar inspeção</button>
-              <button className="box2">Plano de ação</button>
-              <button className="box3">Relatórios concluídos</button>
-              <button className="box4">Dashboard empresa</button>
-              <button className="box5">Gerenciar funcionários</button>
-              <button className="box6">Galeria</button>
+              <button className="box2">Inspeção</button>
+              <button className="box3">Plano de ação</button>
+              <button className="box4">Relatórios concluídos</button>
+              <button className="box5">Dashboard empresa</button>
+              <button className="box6">Documentação de segurança</button>
+              <button className="box7" onClick={() => setModalEditFunc(true)}>
+                Gerenciar funcionários
+              </button>
+              <button className="box8">Galeria</button>
             </div>
           </div>
           <div className="dash-content-box-detalhes">
