@@ -31,8 +31,10 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
   const [user, setUser] = useState<User[] | null>(null);
   const [userDb, setUserDb] = useState<DocumentData | null>(null); // [0] -> userDb[0]
   const [userReady, setUserReady] = useState<boolean>(false);
+  const [empresas, setEmpresas] = useState<any[] | null>(null);
 
   useEffect(() => {
+    getEmpresas();
     onAuthStateChanged(auth, (currUser) => {
       if (currUser) {
         //colocando usuário no estado user
@@ -130,6 +132,17 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
       });
   };
 
+  const getEmpresas = () => {
+    const empresasCollection = collection(db, "empresas");
+    let empresasQuery: any[] = [];
+    const querySnapshot = getDocs(empresasCollection).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        empresasQuery.push(doc.data());
+      });
+    });
+    setEmpresas(empresasQuery);
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -139,6 +152,8 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
         user,
         userReady,
         userDb,
+        getEmpresas,
+        empresas,
       }}
     >
       {children}
