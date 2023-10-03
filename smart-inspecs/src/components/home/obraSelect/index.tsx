@@ -41,8 +41,8 @@ const ObraSelected = () => {
             <div className="dash-content-boxes">
               <button className="box1">Agendar inspeção</button>
               <button className="box2">Inspeção</button>
-              <button className="box3">Plano de ação</button>
-              <button className="box4">Relatórios concluídos</button>
+              <button className="box3">Relatórios concluídos</button>
+              <button className="box4">Plano de ação</button>
               <button className="box5">Dashboard empresa</button>
               <button className="box6">Documentação de segurança</button>
               <button className="box7" onClick={() => setModalEditFunc(true)}>
