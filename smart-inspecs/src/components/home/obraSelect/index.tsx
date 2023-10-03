@@ -4,6 +4,15 @@ import no_image from "../../../assets/no_image.jpg";
 import ModalEditInfo from "../../modalEditInfo";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 import ModalFuncionarios from "../../modalWorkers";
+import iconAgendar from "../../../assets/icons-obraSelect/Agendar.png";
+import iconDashboard from "../../../assets/icons-obraSelect/dashboard.png";
+import iconDocumentos from "../../../assets/icons-obraSelect/documentos.png";
+import iconGaleria from "../../../assets/icons-obraSelect/galeria.png";
+import iconPlano from "../../../assets/icons-obraSelect/plano.png";
+import iconRelatório from "../../../assets/icons-obraSelect/relatório.png";
+import iconGerenciar from "../../../assets/icons-obraSelect/gerenciar.png";
+import iconInspecao from "../../../assets/icons-obraSelect/inspecao.png";
+
 
 export interface iObraSelected {
   id: string;
@@ -39,16 +48,55 @@ const ObraSelected = () => {
           <div className="dash-content-box-gerenciamento">
             <span className="section-title">Gerenciamento de obra</span>
             <div className="dash-content-boxes">
-              <button className="box1">Agendar inspeção</button>
-              <button className="box2">Inspeção</button>
-              <button className="box3">Relatórios concluídos</button>
-              <button className="box4">Plano de ação</button>
-              <button className="box5">Dashboard empresa</button>
-              <button className="box6">Documentação de segurança</button>
+              <button className="box1">
+                <img
+                src={iconAgendar}
+                alt="Um drone encima de um mini relógio e uma lupa"
+                />
+                <span>Agendar Inspeção</span></button>
+              <button className="box2">
+                <img
+                src={iconInspecao}
+                alt="Drone sobre uma mão"
+                />
+                <span>Inspeção</span></button>        
+              <button className="box3">
+                <img
+                src={iconRelatório}
+                alt="Um relatório com com check"
+                />
+                <span>Relatórios concluídos</span></button>
+              <button className="box4">
+                <img
+                src={iconPlano}
+                alt="Um guindaste sobre um papel"
+                />
+                <span>Plano de ação</span></button>
+              <button className="box5">
+                <img
+                src={iconDashboard}
+                alt="Gráfico em colunas verticais"
+                />
+                <span>Dashboard empresa</span></button>
+              <button className="box6">
+                <img
+                src={iconDocumentos}
+                alt="Documento com um símbolo de segurança"
+                />
+                <span>Documentação de segurança</span></button>
               <button className="box7" onClick={() => setModalEditFunc(true)}>
-                Gerenciar funcionários
+                <img
+                src={iconGerenciar}
+                alt="Dois trabalhadores lado a lado"
+                />
+                <span>Gerenciar funcionários</span>
+                
               </button>
-              <button className="box8">Galeria</button>
+              <button className="box8"><img
+                src={iconGaleria}
+                alt="Imagem exemplo de uma paisagem montanhosa e o sol"
+                />
+                <span>Galeria</span></button>
             </div>
           </div>
           <div className="dash-content-box-detalhes">

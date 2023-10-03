@@ -38,6 +38,11 @@ export const DashObraStyled = styled.div`
     }
     .dash-content-boxes > button{
         height: 180px;
+        display:flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+        
     }
     .box1{
         grid-area: box1;
