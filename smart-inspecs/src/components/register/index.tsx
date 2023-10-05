@@ -27,7 +27,7 @@ export const RegisterForm = () => {
       nome: "",
       email: "",
       password: "",
-      empresa: "None",
+      empresa: "selecione",
     },
   });
 
@@ -92,7 +92,7 @@ export const RegisterForm = () => {
                 {...register("empresa")}
                 label="Empresa"
               >
-                <MenuItem value={""}>None</MenuItem>
+                <MenuItem value={"selecione"}>Selecione a sua empresa</MenuItem>
                 {empresas?.map((empresa, index: number) => (
                   <MenuItem key={index} value={empresa}>
                     {empresa}
