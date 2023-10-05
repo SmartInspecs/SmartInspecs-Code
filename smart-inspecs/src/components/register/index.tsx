@@ -1,4 +1,11 @@
-import { Button, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+} from "@mui/material";
 import React, { useContext } from "react";
 import { StyledTitle } from "../loginForm/style";
 import { useForm } from "react-hook-form";
@@ -20,7 +27,7 @@ export const RegisterForm = () => {
       nome: "",
       email: "",
       password: "",
-      empresa: "",
+      empresa: "selecione",
     },
   });
 
@@ -29,6 +36,7 @@ export const RegisterForm = () => {
   const { register, handleSubmit, formState } = form;
 
   const { errors } = formState;
+  const empresas = ["MRV"];
 
   const onSubmit = handleSubmit((data: FormValues, e) => {
     e?.preventDefault();
@@ -78,7 +86,20 @@ export const RegisterForm = () => {
                 error={!!errors.password}
                 helperText={errors.password?.message}
               />
-              <TextField
+              {/* <InputLabel id="label-select">Empresa</InputLabel> */}
+              <Select
+                labelId="label-select"
+                {...register("empresa")}
+                label="Empresa"
+              >
+                <MenuItem value={"selecione"}>Selecione a sua empresa</MenuItem>
+                {empresas?.map((empresa, index: number) => (
+                  <MenuItem key={index} value={empresa}>
+                    {empresa}
+                  </MenuItem>
+                ))}
+              </Select>
+              {/* <TextField
                 label="Empresa"
                 type="text"
                 {...register("empresa", {
@@ -86,7 +107,7 @@ export const RegisterForm = () => {
                 })}
                 error={!!errors.empresa}
                 helperText={errors.empresa?.message}
-              />
+              /> */}
               <Button
                 type="submit"
                 variant="contained"
