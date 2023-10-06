@@ -9,9 +9,9 @@ interface iFuncionario {
   cargo: string;
 }
 const ModalFuncionarios = () => {
-  const localStr = localStorage.getItem("@Smart-Inspecs:obraSelected");
-  const obraSelected = localStr && JSON.parse(localStr);
-  const { setModalEditFunc, addFunc, setAddFunc, updateWorkers } =
+  // const localStr = localStorage.getItem("@Smart-Inspecs:obraSelected");
+  // const obraSelected = localStr && JSON.parse(localStr);
+  const { setModalEditFunc, addFunc, setAddFunc, obraSelected, updateWorkers } =
     useContext(ObrasContexts);
   const form = useForm<iFuncionario>({
     defaultValues: {
@@ -26,6 +26,8 @@ const ModalFuncionarios = () => {
   const onSubmit = handleSubmit((data: iFuncionario, e) => {
     e?.preventDefault();
     updateWorkers(obraSelected.id, [...obraSelected.funcionarios, data]);
+    // window.location.reload();
+    // updateWorkers(obraSelected.id, [...obraSelected.funcionarios, data]);
   });
   return (
     <StyledModalWrapper>
@@ -41,7 +43,7 @@ const ModalFuncionarios = () => {
         </div>
         <div className="modal-box-content">
           <div className="modal-content-text">
-            {obraSelected.funcionarios ? (
+            {obraSelected?.funcionarios ? (
               <ul className="func-list">
                 {obraSelected.funcionarios.map(
                   (funcionario: any, index: number) => (

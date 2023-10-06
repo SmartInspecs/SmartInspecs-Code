@@ -4,6 +4,7 @@ import { ObrasContexts } from "../../../contexts/obrasContext";
 
 interface iObraCardProps {
   obra: {
+    id: string;
     nome: string;
     endereço: string;
     inspecoes: [];
@@ -12,10 +13,10 @@ interface iObraCardProps {
 }
 
 const ObraCard = ({ obra }: iObraCardProps) => {
-  const { setModalObra, setObraSelected } = useContext(ObrasContexts);
+  const { setModalObra, getObra } = useContext(ObrasContexts);
 
-  const handleClick = () => {
-    setObraSelected(obra);
+  const handleClick = async () => {
+    await getObra(obra.id);
     setModalObra(true);
     localStorage.setItem("@Smart-Inspecs:obraSelected", JSON.stringify(obra));
   };

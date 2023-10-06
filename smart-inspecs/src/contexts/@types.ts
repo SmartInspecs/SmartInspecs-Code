@@ -32,7 +32,10 @@ export interface iNovaObra{
   area: string;
   tipoObra: string;
   inspecoes: [];
+  funcionarios: [];
   url: string;
+  updatedAt: string;
+
 }
 
 export interface iObraCardProps {
