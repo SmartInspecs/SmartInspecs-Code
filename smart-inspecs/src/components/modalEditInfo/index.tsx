@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
 import { StyledModalWrapper } from "./style";
 import { ObrasContexts } from "../../contexts/obrasContext";
-import { Stack, TextField } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import { iObraSelected } from "../home/obraSelect";
 
@@ -122,12 +129,25 @@ const ModalEditInfo = () => {
                 error={!!errors.area}
                 helperText={errors.area?.message}
               />
-              <TextField
+              {/* <TextField
                 label="Tipo de obra"
                 {...register("tipoObra")}
                 error={!!errors.tipoObra}
                 helperText={errors.tipoObra?.message}
-              />
+              /> */}
+              <FormControl>
+                <InputLabel id="tipoObra">Tipo de Obra</InputLabel>
+                <Select
+                  labelId="tipoObra"
+                  label="Tipo de Obra"
+                  {...register("tipoObra")}
+                >
+                  <MenuItem value="Residencial">Residencial</MenuItem>
+                  <MenuItem value="Comercial">Comercial</MenuItem>
+                  <MenuItem value="Industrial">Industrial</MenuItem>
+                  <MenuItem value="Infraestrutura">Infraestrutura</MenuItem>
+                </Select>
+              </FormControl>
             </Stack>
             <button type="submit">Editar</button>
           </form>

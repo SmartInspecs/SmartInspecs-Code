@@ -14,7 +14,8 @@ import {
 } from "firebase/firestore";
 import UserContext from "./userContext";
 import { db } from "../services/firebaseConfig";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const ObrasContexts = createContext<any | null>(null);
 
 export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
@@ -76,9 +77,11 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
       if (empresaId) {
         const obraRef = collection(db, "empresas", empresaId, "obras");
         await addDoc(obraRef, novaObra);
+        toast.success("Obra adicionada com sucesso!");
       }
     } catch (error) {
       console.error("Erro ao adicionar obra:", error);
+      toast.error("Erro ao adicionar obra!");
     }
   };
 
@@ -108,6 +111,7 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         setObraSelected(obraSelectedData);
       } else {
         console.log("Obra não encontrada!");
+        toast.error("Obra não encontrada!");
       }
     } catch (error) {
       console.error("Erro ao buscar obra:", error);
@@ -138,10 +142,12 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
           updatedAt: serverTimestamp(),
         });
         console.log("Obra atualizada com sucesso!");
+        toast.success("Obra atualizada com sucesso!");
         setModalEditInfo(false);
       }
     } catch (error) {
       console.error("Erro ao atualizar obra:", error);
+      toast.error("Erro ao atualizar obra!");
     }
   };
 
@@ -158,10 +164,12 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
           funcionarios: workers,
         });
         console.log("Funcionário adicionado com sucesso!");
-        setModalEditInfo(false);
+        toast.success("Funcionário adicionado com sucesso!");
+        setModalEditFunc(false);
       }
     } catch (error) {
       console.error("Erro ao atualizar obra:", error);
+      toast.error("Erro ao atualizar obra!");
     }
   };
 

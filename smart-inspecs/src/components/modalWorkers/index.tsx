@@ -20,8 +20,7 @@ const ModalFuncionarios = () => {
       cargo: "",
     },
   });
-  const { register, handleSubmit, formState } = form;
-  const { errors } = formState;
+  const { register, handleSubmit } = form;
 
   const onSubmit = handleSubmit((data: iFuncionario, e) => {
     e?.preventDefault();
@@ -69,13 +68,27 @@ const ModalFuncionarios = () => {
             </button>
             {addFunc && (
               <form noValidate onSubmit={onSubmit}>
-                <input type="text" {...register("nome")} placeholder="Nome" />
+                <input
+                  type="text"
+                  {...register("nome", {
+                    required: "O nome do funcionário é obrigatório",
+                  })}
+                  placeholder="Nome"
+                />
                 <input
                   type="email"
-                  {...register("email")}
+                  {...register("email", {
+                    required: "O email do funcionário é obrigatório",
+                  })}
                   placeholder="Email"
                 />
-                <input type="text" {...register("cargo")} placeholder="Cargo" />
+                <input
+                  type="text"
+                  {...register("cargo", {
+                    required: "o cargo do funcionário é obrigatório",
+                  })}
+                  placeholder="Cargo"
+                />
                 <button type="submit">Adicionar</button>
               </form>
             )}

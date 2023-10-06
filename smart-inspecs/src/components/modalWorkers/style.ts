@@ -71,6 +71,8 @@ export const StyledModalWrapper = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        height: 450px;
+        overflow-y: scroll;
     }
 
     .modal-content-text > ul >li{
