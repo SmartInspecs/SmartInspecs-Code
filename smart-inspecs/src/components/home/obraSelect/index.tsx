@@ -12,6 +12,7 @@ import iconPlano from "../../../assets/icons-obraSelect/plano.png";
 import iconRelatório from "../../../assets/icons-obraSelect/relatório.png";
 import iconGerenciar from "../../../assets/icons-obraSelect/gerenciar.png";
 import iconInspecao from "../../../assets/icons-obraSelect/inspecao.png";
+import { Link} from "react-router-dom";
 
 
 export interface iObraSelected {
@@ -109,7 +110,7 @@ const ObraSelected = () => {
                 />
               </div>
               <div className="important-info">
-                <span>Informações importantes</span>
+                <span>Informações importantes:</span>
                 <div className="important-info-list">
                   <span>
                     Nome da obra: <p>{obraSelected?.nome}</p>
@@ -142,6 +143,9 @@ const ObraSelected = () => {
                   <span>
                     Tipo de obra: <p>{obraSelected?.tipoObra}</p>
                   </span>
+                    <Link className="link-button" to='#' onClick={() => setModalEditInfo(true)}>
+                    Editar informações
+                    </Link>
                 </div>
                 {obraSelected?.respTecnico &&
                 obraSelected?.prazo &&
@@ -153,9 +157,7 @@ const ObraSelected = () => {
                     adicione
                   </p>
                 )}
-                <button onClick={() => setModalEditInfo(true)}>
-                  Editar informações
-                </button>
+                
               </div>
             </div>
           </div>
