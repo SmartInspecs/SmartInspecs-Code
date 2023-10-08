@@ -92,7 +92,7 @@ export const RegisterForm = () => {
                 {...register("empresa")}
                 label="Empresa"
               >
-                <MenuItem value={"selecione"}>Selecione a sua empresa</MenuItem>
+                <MenuItem value={""}>Selecione a sua empresa</MenuItem>
                 {empresas?.map((empresa, index: number) => (
                   <MenuItem key={index} value={empresa}>
                     {empresa}

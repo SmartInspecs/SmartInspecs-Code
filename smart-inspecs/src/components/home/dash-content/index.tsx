@@ -62,6 +62,7 @@ const DashContentAdm = () => {
               obras?.map(
                 (
                   obra: {
+                    id: string;
                     nome: string;
                     endereço: string;
                     inspecoes: [];

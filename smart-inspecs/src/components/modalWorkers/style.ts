@@ -71,13 +71,56 @@ export const StyledModalWrapper = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        height: 450px;
+        overflow-y: scroll;
     }
 
-    .modal-content-text > ul >li{
+    .func-card{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 1px solid var(--color-grey-3);
+        border-radius: 8px;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .func-card-left{
         display: flex;
         flex-direction: column;
-        border: 1px solid var(--color-grey-3);
-        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .func-card-left > span{
+        display: flex;
+        gap: 1rem;
+    }
+
+    .func-card-right{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        button{
+            width: 100%;
+            height: 45px;
+            border: none;
+            border-radius: 8px;
+            background-color: transparent;
+            color: var(--white);
+            font-weight: var(--font-weight-1);
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover{
+            transform: scale(1.1);
+        }
+
+        img{
+            width: 25px;
+            height: 25px;
+        }
     }
 
     .modal-content-text > ul >li > span{
@@ -92,6 +135,7 @@ export const StyledModalWrapper = styled.div`
         gap: 1rem;
         width: 100%;
     }
+
     form > input{
         height: 45px;
     }

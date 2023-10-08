@@ -5,6 +5,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   serverTimestamp,
@@ -13,7 +14,8 @@ import {
 } from "firebase/firestore";
 import UserContext from "./userContext";
 import { db } from "../services/firebaseConfig";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const ObrasContexts = createContext<any | null>(null);
 
 export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
@@ -26,6 +28,11 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
   const [modalEditInfo, setModalEditInfo] = useState(false);
   const [modalEditFunc, setModalEditFunc] = useState(false);
   const [addFunc, setAddFunc] = useState(false);
+
+  const obraSelectedLocal = localStorage.getItem("@Smart-Inspecs:obraSelected");
+  const obraSelectedParsed = obraSelectedLocal
+    ? JSON.parse(obraSelectedLocal)
+    : null;
 
   const { userDb } = useContext(UserContext);
 
@@ -42,12 +49,16 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
           obrasSnapshot.forEach((doc) => {
             obrasData.push({ id: doc.id, ...doc.data() });
           });
+          if (obraSelectedParsed) {
+            getObra(obraSelectedParsed.id);
+          }
           setObras(obrasData);
           setLoadingObra(false);
         }
       })();
     }
-  }, [empresa?.id, userDb]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [empresa?.id, userDb, obraSelectedParsed?.id]);
 
   const getEmpresa = async (db: Firestore, empresaName: string) => {
     const empresaQuery = query(
@@ -66,9 +77,44 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
       if (empresaId) {
         const obraRef = collection(db, "empresas", empresaId, "obras");
         await addDoc(obraRef, novaObra);
+        toast.success("Obra adicionada com sucesso!");
       }
     } catch (error) {
       console.error("Erro ao adicionar obra:", error);
+      toast.error("Erro ao adicionar obra!");
+    }
+  };
+
+  const getObra = async (obraId: string) => {
+    try {
+      const obraRef = doc(db, `empresas/${empresa?.id}/obras/${obraId}`);
+      const docObra = await getDoc(obraRef);
+      if (docObra.exists()) {
+        const obraData = docObra.data();
+        const obraSelectedData: iNovaObra = {
+          id: docObra.id,
+          nome: obraData?.nome || "",
+          endereco: obraData?.endereco || "",
+          cep: obraData?.cep || "",
+          respTecnico: obraData?.respTecnico || "",
+          respSegQual: obraData?.respSegQual || "",
+          prazo: obraData?.prazo || "",
+          princMetConst: obraData?.princMetConst || "",
+          tiposEPCs: obraData?.tiposEPCs || "",
+          area: obraData?.area || "",
+          tipoObra: obraData?.tipoObra || "",
+          inspecoes: obraData?.inspecoes || [],
+          url: obraData?.url || "",
+          funcionarios: obraData?.funcionarios || [],
+          updatedAt: obraData?.updatedAt || "",
+        };
+        setObraSelected(obraSelectedData);
+      } else {
+        console.log("Obra não encontrada!");
+        toast.error("Obra não encontrada!");
+      }
+    } catch (error) {
+      console.error("Erro ao buscar obra:", error);
     }
   };
 
@@ -91,17 +137,25 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
           tiposEPCs: obra.tiposEPCs || "",
           area: obra.area || "",
           tipoObra: obra.tipoObra || "",
+          funcionarios: obra.funcionarios || [],
+          inspecoes: obra.inspecoes || [],
           updatedAt: serverTimestamp(),
         });
         console.log("Obra atualizada com sucesso!");
+        toast.success("Obra atualizada com sucesso!");
         setModalEditInfo(false);
       }
     } catch (error) {
       console.error("Erro ao atualizar obra:", error);
+      toast.error("Erro ao atualizar obra!");
     }
   };
 
-  const updateWorkers = async (obraId: string, workers: any[]) => {
+  const updateWorkers = async (
+    obraId: string,
+    workers: any[],
+    type: string
+  ) => {
     try {
       const empresaId = empresa?.id;
 
@@ -113,11 +167,13 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         await updateDoc(obraRef, {
           funcionarios: workers,
         });
-        console.log("Funcionário adicionado com sucesso!");
-        setModalEditInfo(false);
+        console.log("Funcionário alterado com sucesso!");
+        toast.success("Funcionário alterado com sucesso!");
+        setModalEditFunc(false);
       }
     } catch (error) {
       console.error("Erro ao atualizar obra:", error);
+      toast.error("Erro ao atualizar obra!");
     }
   };
 
@@ -142,6 +198,7 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         setModalEditFunc,
         addFunc,
         setAddFunc,
+        getObra,
       }}
     >
       {children}
