@@ -151,7 +151,11 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
     }
   };
 
-  const updateWorkers = async (obraId: string, workers: any[]) => {
+  const updateWorkers = async (
+    obraId: string,
+    workers: any[],
+    type: string
+  ) => {
     try {
       const empresaId = empresa?.id;
 
@@ -163,8 +167,8 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
         await updateDoc(obraRef, {
           funcionarios: workers,
         });
-        console.log("Funcionário adicionado com sucesso!");
-        toast.success("Funcionário adicionado com sucesso!");
+        console.log("Funcionário alterado com sucesso!");
+        toast.success("Funcionário alterado com sucesso!");
         setModalEditFunc(false);
       }
     } catch (error) {
