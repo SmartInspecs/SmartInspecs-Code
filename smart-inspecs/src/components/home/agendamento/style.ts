@@ -55,7 +55,7 @@ export const StyledAgendamentoDiv = styled.div`
         height: 100%;
         margin-top: 1rem;
         gap: 1rem;
-        height:100px;
+        height:250px;
         max-height: 400px;
         overflow-y: auto;
     }

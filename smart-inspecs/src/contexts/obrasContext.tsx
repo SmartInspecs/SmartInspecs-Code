@@ -67,6 +67,10 @@ export const ObrasContextProvider = ({ children }: iDefaultProviderProps) => {
     );
     const empresaSnapshot = await getDocs(empresaQuery);
     empresaSnapshot.forEach((doc) => {
+      localStorage.setItem(
+        "@Smart-Inspecs:empresa",
+        JSON.stringify({ id: doc.id, empresa: doc.data() })
+      );
       setEmpresa({ id: doc.id, empresa: doc.data() });
     });
   };
