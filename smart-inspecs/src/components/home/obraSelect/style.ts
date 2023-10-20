@@ -14,6 +14,8 @@ export const DashObraStyled = styled.div`
         display: flex;
         gap: 45px;
         margin-top: 1rem;
+        
+        
     }
 
     /* coluna 1 - esquerda */
@@ -35,13 +37,26 @@ export const DashObraStyled = styled.div`
         width: 100%;
         gap:1rem;
         height:100%;
+        margin-bottom: 1rem;
+        
+        
     }
     .dash-content-boxes > button{
-        height: 180px;
+        align-items: center;
         display:flex;
         flex-direction: column; 
-        align-items: center;
+        height: 11.25rem;
         justify-content: center;
+        border-radius: 8px;
+        border: none;
+        background-color:#d9d9d9;
+        cursor:pointer;
+
+        span{
+            font-family: 'Poppins';
+            font-weight: var(--font-weight-2);
+            font-size: 1rem;
+        }
         
     }
     .box1{
@@ -102,9 +117,15 @@ export const DashObraStyled = styled.div`
         display: flex;
         flex-direction: column;
         margin-top: 1rem;
+        margin-bottom:0.4rem;
         padding: 1rem;
         width: 80%;
         gap: 0.5rem;
+        
+        span{
+            font-weight: var(--font-weight-2);
+
+        }
     }
 
     .warning{
@@ -116,6 +137,7 @@ export const DashObraStyled = styled.div`
         gap: 1rem;
     }
 
+
     .important-info-list{
         background-color: var(--color-grey-0);
         border-radius: 8px;
@@ -125,6 +147,7 @@ export const DashObraStyled = styled.div`
         padding: 1.25rem;
         gap: 1rem;
         width:90%;
+
     }
 
     .important-info-list > span{
@@ -135,6 +158,19 @@ export const DashObraStyled = styled.div`
 
     .important-info-list > span > p{
         font-weight: var(--font-weight-4);
+    }
+
+    .link-button{
+        text-decoration: none;
+        display:flex;
+        justify-content:flex-end;
+        color: #006400;
+        font-weight: var(--font-weight-1);
+        cursor:pointer;
+    }
+    .link-button:hover{ 
+        text-decoration:underline;
+
     }
 
 `
