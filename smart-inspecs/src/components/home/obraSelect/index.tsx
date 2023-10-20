@@ -12,7 +12,9 @@ import iconPlano from "../../../assets/icons-obraSelect/plano.png";
 import iconRelatório from "../../../assets/icons-obraSelect/relatório.png";
 import iconGerenciar from "../../../assets/icons-obraSelect/gerenciar.png";
 import iconInspecao from "../../../assets/icons-obraSelect/inspecao.png";
-import { Link} from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
+
 
 
 export interface iObraSelected {
@@ -37,6 +39,7 @@ const ObraSelected = () => {
     obraLocalStorage && JSON.parse(obraLocalStorage);
   const { modalEditInfo, setModalEditInfo, modalEditFunc, setModalEditFunc } =
     useContext(ObrasContexts);
+  const navigate = useNavigate();
   // adicionar nome da obra a url, de modo: home/obra/nomeobra
   //adicionar menu inspeções, e doc segurança
   return (
@@ -49,55 +52,47 @@ const ObraSelected = () => {
           <div className="dash-content-box-gerenciamento">
             <span className="section-title">Gerenciamento de obra</span>
             <div className="dash-content-boxes">
-              <button className="box1">
+              <button className="box1" onClick={() => navigate("agendamento")}>
                 <img
-                src={iconAgendar}
-                alt="Um drone encima de um mini relógio e uma lupa"
+                  src={iconAgendar}
+                  alt="Um drone encima de um mini relógio e uma lupa"
                 />
-                <span>Agendar Inspeção</span></button>
+                <span>Agendar Inspeção</span>
+              </button>
               <button className="box2">
-                <img
-                src={iconInspecao}
-                alt="Drone sobre uma mão"
-                />
-                <span>Inspeção</span></button>        
+                <img src={iconInspecao} alt="Drone sobre uma mão" />
+                <span>Inspeção</span>
+              </button>
               <button className="box3">
-                <img
-                src={iconRelatório}
-                alt="Um relatório com com check"
-                />
-                <span>Relatórios concluídos</span></button>
+                <img src={iconRelatório} alt="Um relatório com com check" />
+                <span>Relatórios concluídos</span>
+              </button>
               <button className="box4">
-                <img
-                src={iconPlano}
-                alt="Um guindaste sobre um papel"
-                />
-                <span>Plano de ação</span></button>
+                <img src={iconPlano} alt="Um guindaste sobre um papel" />
+                <span>Plano de ação</span>
+              </button>
               <button className="box5">
-                <img
-                src={iconDashboard}
-                alt="Gráfico em colunas verticais"
-                />
-                <span>Dashboard empresa</span></button>
+                <img src={iconDashboard} alt="Gráfico em colunas verticais" />
+                <span>Dashboard empresa</span>
+              </button>
               <button className="box6">
                 <img
-                src={iconDocumentos}
-                alt="Documento com um símbolo de segurança"
+                  src={iconDocumentos}
+                  alt="Documento com um símbolo de segurança"
                 />
-                <span>Documentação de segurança</span></button>
-              <button className="box7" onClick={() => setModalEditFunc(true)}>
-                <img
-                src={iconGerenciar}
-                alt="Dois trabalhadores lado a lado"
-                />
-                <span>Gerenciar funcionários</span>
-                
+                <span>Documentação de segurança</span>
               </button>
-              <button className="box8"><img
-                src={iconGaleria}
-                alt="Imagem exemplo de uma paisagem montanhosa e o sol"
+              <button className="box7" onClick={() => setModalEditFunc(true)}>
+                <img src={iconGerenciar} alt="Dois trabalhadores lado a lado" />
+                <span>Gerenciar funcionários</span>
+              </button>
+              <button className="box8">
+                <img
+                  src={iconGaleria}
+                  alt="Imagem exemplo de uma paisagem montanhosa e o sol"
                 />
-                <span>Galeria</span></button>
+                <span>Galeria</span>
+              </button>
             </div>
           </div>
           <div className="dash-content-box-detalhes">
