@@ -6,6 +6,8 @@ import pencil from "../../assets/pencil.png";
 import trash from "../../assets/trash.png";
 import ModalEditFunc from "../home/modalEditFunc";
 
+// mudando
+
 interface iFuncionario {
   nome: string;
   email: string;
