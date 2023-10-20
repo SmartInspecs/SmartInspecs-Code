@@ -1,4 +1,11 @@
-import { Button, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+} from "@mui/material";
 import React, { useContext } from "react";
 import { StyledTitle } from "../loginForm/style";
 import { useForm } from "react-hook-form";
@@ -7,16 +14,20 @@ import { Link } from "react-router-dom";
 import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
 
-type FormValues = {
+export type FormValues = {
+  nome: string;
   email: string;
   password: string;
+  empresa: string;
 };
 
 export const RegisterForm = () => {
   const form = useForm<FormValues>({
     defaultValues: {
+      nome: "",
       email: "",
       password: "",
+      empresa: "selecione",
     },
   });
 
@@ -25,10 +36,11 @@ export const RegisterForm = () => {
   const { register, handleSubmit, formState } = form;
 
   const { errors } = formState;
+  const empresas = ["MRV"];
 
   const onSubmit = handleSubmit((data: FormValues, e) => {
     e?.preventDefault();
-    createUser(auth, data.email, data.password);
+    createUser(auth, data);
   });
 
   const customButtonStyle = {
@@ -48,6 +60,15 @@ export const RegisterForm = () => {
             <Stack spacing={2} width={"90%"} fontFamily={"Poppins"}>
               <StyledTitle>Registro</StyledTitle>
               <TextField
+                label="Seu nome"
+                type="text"
+                {...register("nome", {
+                  required: "O seu é obrigatório",
+                })}
+                error={!!errors.nome}
+                helperText={errors.nome?.message}
+              />
+              <TextField
                 label="E-mail"
                 type="email"
                 {...register("email", {
@@ -65,13 +86,35 @@ export const RegisterForm = () => {
                 error={!!errors.password}
                 helperText={errors.password?.message}
               />
+              {/* <InputLabel id="label-select">Empresa</InputLabel> */}
+              <Select
+                labelId="label-select"
+                {...register("empresa")}
+                label="Empresa"
+              >
+                <MenuItem value={""}>Selecione a sua empresa</MenuItem>
+                {empresas?.map((empresa, index: number) => (
+                  <MenuItem key={index} value={empresa}>
+                    {empresa}
+                  </MenuItem>
+                ))}
+              </Select>
+              {/* <TextField
+                label="Empresa"
+                type="text"
+                {...register("empresa", {
+                  required: "O nome da empresa é obrigatório",
+                })}
+                error={!!errors.empresa}
+                helperText={errors.empresa?.message}
+              /> */}
               <Button
                 type="submit"
                 variant="contained"
                 color="primary"
                 style={customButtonStyle}
               >
-                Login
+                Registrar
               </Button>
               <Link to="/login">Ir para login</Link>
             </Stack>
