@@ -17,7 +17,7 @@ export const StyledModalWrapper = styled.div`
         display: flex;
         flex-direction: column;
         border-radius: 1rem;
-        padding: 1rem;
+        padding: 2rem;
     }
 
     .modal-box-header{
@@ -28,21 +28,24 @@ export const StyledModalWrapper = styled.div`
     }
 
     .modal-title{
+        font-size: 1.25rem;
         font-weight: var(--font-weight-1);
     }
 
-    .modal-button{
+    .button-close{
         border: none;
         background-color:transparent;
         cursor:pointer;
-        font-size:1rem;
+        font-size: 1.25rem;
         font-weight: var(--font-weight-1);
         transition: transform 0.3s ease;
     }
     
-    .modal-button:hover{
+    .button-close:hover{
         transform:scale(1.5);
     }
+
+    
 
     .modal-box-content{
         display: flex;
@@ -71,24 +74,54 @@ export const StyledModalWrapper = styled.div`
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        height: 450px;
-        overflow-y: scroll;
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    .button-modal{
+        height:3.7rem;
+        width: 70%;
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        background-color: var(--primary-color);
+        color: var(--white);
+        font-weight: var(--font-weight-1);
+        padding: 0 1rem;
+        transition: 0.2s ease;
+        font-size: 1rem;
+    }
+    
+    .button-modal:hover{
+        transform:scale(1.1);
+    }
+
+    .func-list{
+        overflow: hidden;
     }
 
     .func-card{
         display: flex;
         flex-direction: row;
+        width: 95%;
         justify-content: space-between;
-        border: 1px solid var(--color-grey-3);
-        border-radius: 8px;
-        padding: 1rem;
+        background-color:#999999;
+        border-radius: 10px;
+        padding: 1rem ;
         gap: 1rem;
+        
+
+        
     }
 
     .func-card-left{
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        font-size: 1rem;
+        font-weight: var(--font-weight-2);
+
     }
 
     .func-card-left > span{
@@ -99,16 +132,15 @@ export const StyledModalWrapper = styled.div`
     .func-card-right{
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        
+
 
         button{
             width: 100%;
             height: 45px;
             border: none;
-            border-radius: 8px;
+            
             background-color: transparent;
-            color: var(--white);
-            font-weight: var(--font-weight-1);
             cursor: pointer;
             transition: 0.3s ease;
         }
@@ -117,10 +149,7 @@ export const StyledModalWrapper = styled.div`
             transform: scale(1.1);
         }
 
-        img{
-            width: 25px;
-            height: 25px;
-        }
+        
     }
 
     .modal-content-text > ul >li > span{
@@ -135,8 +164,26 @@ export const StyledModalWrapper = styled.div`
         gap: 1rem;
         width: 100%;
     }
-
-    form > input{
-        height: 45px;
+    .form-campo{
+        display: flex;
+        flex-direction: column;
     }
+    .campo-etiqueta {
+        font-weight: var(--font-weight-1);
+        line-height: 1.2rem;
+    }
+    
+    .campo-escrita {
+        
+        height:2.5rem;
+        border: 2px solid var(--color-grey-0-5);
+        border-radius: 10px;
+        background-color: #D9D9D9;
+        padding: 1em;
+        margin-top: .5em;
+    }
+    form>button{
+        align-self:center;
+    }
+
 `
