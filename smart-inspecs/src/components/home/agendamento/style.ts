@@ -117,10 +117,7 @@ export const StyledAgendamentoDiv = styled.div`
         height: 100%;
         margin-top: 1rem;
         gap: 1rem;
-        
-        
         overflow:hidden;
-        
     }
 
     .agendamentos-box > li{

@@ -1,31 +1,48 @@
 import React, { useContext, useState } from "react";
-import { StyledAgendamentoDiv } from "./style";
+import { Styled
+        Div } from "./style";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 import { useForm } from "react-hook-form";
+import { InspecaoContext } from "../../../contexts/inspecaoContext";
+import { format } from "date-fns";
 
 interface iAgendamento {
-  obra: string;
-  data: string;
+  finalidade: string;
+  date: string;
   responsavel: string;
 }
+
 const Agendamento = () => {
   const { obraSelected } = useContext(ObrasContexts);
+  const {
+    addAgendamento,
+    deleteAgendamento,
+    agendamentosSnapshot,
+    loadingAgendamentos,
+  } = useContext(InspecaoContext);
   const [formAgenda, setFormAgenda] = useState(false);
-  const [agendamentos, setAgendamentos] = useState<iAgendamento[]>([]);
+  const [agendamentosLocal, setAgendamentosLocal] = useState<iAgendamento[]>(
+    []
+  );
 
   const { register, handleSubmit } = useForm<iAgendamento>({
     defaultValues: {
-      obra: obraSelected?.nome,
-      data: "",
+      date: "",
       responsavel: "",
+      finalidade: "",
     },
   });
 
   const onSubmit = handleSubmit((data: iAgendamento, e) => {
     e?.preventDefault();
-    console.log(data);
-    setAgendamentos([...agendamentos, data]);
+    setAgendamentosLocal([...agendamentosLocal, data]);
+    addAgendamento(data);
   });
+
+  const formatDate = (date: any) => {
+    const dateParsed = new Date(date);
+    return format(dateParsed, "dd/MM/yyyy HH:mm");
+  };
 
   return (
     <StyledAgendamentoDiv>
@@ -75,15 +92,15 @@ const Agendamento = () => {
                 <div className="atributos-agendamento">
                   <span>Data: {agendamento.data}</span>
                   <span>Responsável: {agendamento.responsavel}</span>
-              </div>
-              <button>
-                X</button>
-                
-              </li>
+                   <button onClick={() => deleteAgendamento(doc.id)}>
+                    Excluir
+                  </button>
+                </div>
+              <button>X</button>
+             </li>
             ))}
           </ul>
         </div>
-      </div>
     </StyledAgendamentoDiv>
   );
 };
