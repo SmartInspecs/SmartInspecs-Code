@@ -4,18 +4,21 @@ import GlobalStyle from "./styles/GlobalStyles";
 import RoutesMain from "./routes";
 import { UserContextProvider } from "./contexts/userContext";
 import { ObrasContextProvider } from "./contexts/obrasContext";
+import { InspecaoContextProvider } from "./contexts/inspecaoContext";
 import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
       <ToastContainer />
-      <UserContextProvider>
-        <ObrasContextProvider>
-          <GlobalStyle />
-          <RoutesMain />
-        </ObrasContextProvider>
-      </UserContextProvider>
+      <InspecaoContextProvider>
+        <UserContextProvider>
+          <ObrasContextProvider>
+            <GlobalStyle />
+            <RoutesMain />
+          </ObrasContextProvider>
+        </UserContextProvider>
+      </InspecaoContextProvider>
     </>
   );
 }

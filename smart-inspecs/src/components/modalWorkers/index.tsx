@@ -67,37 +67,36 @@ const ModalFuncionarios = () => {
           </div>
           <div className="modal-box-content">
             <div className="modal-content-text">
-              {obraSelected?.funcionarios ? (
-                <ul className="func-list">
-                  {obraSelected.funcionarios.map(
-                    (funcionario: any, index: number) => (
-                      <li key={index} className="func-card">
-                        <div className="func-card-left">
-                          <span>
-                            Nome: <p>{funcionario.nome}</p>
-                          </span>
-                          <span>
-                            Email: <p>{funcionario.email}</p>
-                          </span>
-                          <span>
-                            Cargo: <p>{funcionario.cargo}</p>
-                          </span>
-                        </div>
-                        <div className="func-card-right">
-                          <button onClick={() => handleEditFunc(index)}>
-                            <img src={pencil} alt="lápis, indicando edição" />
-                          </button>
-                          <button onClick={() => handleDeleteFunc(index)}>
-                            <img src={trash} alt="Lixo, indicando deletar" />
-                          </button>
-                        </div>
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : (
+              {obraSelected?.funcionarios.length === 0 && (
                 <p>Sem funcionários cadastrados</p>
               )}
+              <ul className="func-list">
+                {obraSelected?.funcionarios.map(
+                  (funcionario: any, index: number) => (
+                    <li key={index} className="func-card">
+                      <div className="func-card-left">
+                        <span>
+                          Nome: <p>{funcionario.nome}</p>
+                        </span>
+                        <span>
+                          Email: <p>{funcionario.email}</p>
+                        </span>
+                        <span>
+                          Cargo: <p>{funcionario.cargo}</p>
+                        </span>
+                      </div>
+                      <div className="func-card-right">
+                        <button onClick={() => handleEditFunc(index)}>
+                          <img src={pencil} alt="lápis, indicando edição" />
+                        </button>
+                        <button onClick={() => handleDeleteFunc(index)}>
+                          <img src={trash} alt="Lixo, indicando deletar" />
+                        </button>
+                      </div>
+                    </li>
+                  )
+                )}
+              </ul>
               <button onClick={() => setAddFunc(true)}>
                 Adicionar funcionários
               </button>

@@ -2,30 +2,46 @@ import React, { useContext, useState } from "react";
 import { StyledAgendamentoDiv } from "./style";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 import { useForm } from "react-hook-form";
+import { InspecaoContext } from "../../../contexts/inspecaoContext";
+import { format } from "date-fns";
 
 interface iAgendamento {
-  obra: string;
-  data: string;
+  finalidade: string;
+  date: string;
   responsavel: string;
 }
+
 const Agendamento = () => {
   const { obraSelected } = useContext(ObrasContexts);
+  const {
+    addAgendamento,
+    deleteAgendamento,
+    agendamentosSnapshot,
+    loadingAgendamentos,
+  } = useContext(InspecaoContext);
   const [formAgenda, setFormAgenda] = useState(false);
-  const [agendamentos, setAgendamentos] = useState<iAgendamento[]>([]);
+  const [agendamentosLocal, setAgendamentosLocal] = useState<iAgendamento[]>(
+    []
+  );
 
   const { register, handleSubmit } = useForm<iAgendamento>({
     defaultValues: {
-      obra: obraSelected?.nome,
-      data: "",
+      date: "",
       responsavel: "",
+      finalidade: "",
     },
   });
 
   const onSubmit = handleSubmit((data: iAgendamento, e) => {
     e?.preventDefault();
-    console.log(data);
-    setAgendamentos([...agendamentos, data]);
+    setAgendamentosLocal([...agendamentosLocal, data]);
+    addAgendamento(data);
   });
+
+  const formatDate = (date: any) => {
+    const dateParsed = new Date(date);
+    return format(dateParsed, "dd/MM/yyyy HH:mm");
+  };
 
   return (
     <StyledAgendamentoDiv>
@@ -34,13 +50,22 @@ const Agendamento = () => {
         <div className="agendamentos">
           <span className="section-title">Agendamentos</span>
           <ul className="agendamentos-box">
-            {agendamentos.length === 0 && <span>Sem agendamentos</span>}
-            {agendamentos.map((agendamento, index) => (
-              <li className="agendamento" key={index}>
-                <span>Data: {agendamento.data}</span>
-                <span>Responsável: {agendamento.responsavel}</span>
-              </li>
-            ))}
+            {agendamentosSnapshot.docs?.length === 0 && (
+              <span>Sem agendamentos</span>
+            )}
+            {agendamentosSnapshot.docs?.map((doc: any, index: number) => {
+              const data = doc.data();
+              return (
+                <li className="agendamento" key={index}>
+                  <span>Finalidade: {data.finalidade}</span>
+                  <span>Data: {formatDate(data?.date)}</span>
+                  <span>Responsável: {data?.responsavel}</span>
+                  <button onClick={() => deleteAgendamento(doc.id)}>
+                    Excluir
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <button
@@ -53,8 +78,13 @@ const Agendamento = () => {
           <form className="form-agenda" onSubmit={onSubmit}>
             <input
               type="datetime-local"
-              {...register("data")}
+              {...register("date")}
               placeholder="Data"
+            />
+            <input
+              type="text"
+              {...register("finalidade")}
+              placeholder="Finalidade"
             />
             <input
               type="text"
