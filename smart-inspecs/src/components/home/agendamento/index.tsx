@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Styled
-        Div } from "./style";
+import { StyledAgendamentoDiv } from "./style";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 import { useForm } from "react-hook-form";
 import { InspecaoContext } from "../../../contexts/inspecaoContext";
@@ -47,11 +46,9 @@ const Agendamento = () => {
   return (
     <StyledAgendamentoDiv>
       <span>home ➙ obras ➙ {obraSelected?.nome}</span>
-      <span >Agendamentos</span>
+      <span>Agendamentos</span>
       <div className="dash-content-box-area">
-      
         <div className="container-criar_agendamento">
-          
           <button
             className="criar-agendamento"
             onClick={() => setFormAgenda(true)}
@@ -61,16 +58,20 @@ const Agendamento = () => {
           {formAgenda && (
             <form className="form-agenda" onSubmit={onSubmit}>
               <fieldset className="form-campo">
-                <label className="campo-etiqueta" htmlFor="Data">Data e Hora</label>
+                <label className="campo-etiqueta" htmlFor="Data">
+                  Data e Hora
+                </label>
                 <input
                   className="campo-escrita"
                   type="datetime-local"
-                  {...register("data")}
+                  {...register("date")}
                   placeholder="Data"
                 />
               </fieldset>
               <fieldset className="form-campo">
-                <label className="campo-etiqueta" htmlFor="Responsável">Responsável</label>
+                <label className="campo-etiqueta" htmlFor="Responsável">
+                  Responsável
+                </label>
                 <input
                   className="campo-escrita"
                   type="text"
@@ -78,7 +79,7 @@ const Agendamento = () => {
                   placeholder="Responsável"
                 />
               </fieldset>
-              
+
               <button className="agendar">Agendar</button>
             </form>
           )}
@@ -86,21 +87,23 @@ const Agendamento = () => {
         <div className="agendamentos">
           <span className="section-title">Lista de Agendamentos</span>
           <ul className="agendamentos-box">
-            {agendamentos.length === 0 && <span>Sem agendamentos, por enquanto!</span>}
-            {agendamentos.map((agendamento, index) => (
-              <li className="agendamento" key={index}>
+            {agendamentosSnapshot.docs.length === 0 ? (
+              <span>Sem agendamentos, por enquanto!</span>
+            ) : (
+              false
+            )}
+            {agendamentosSnapshot?.docs.map((doc: any) => (
+              <li className="agendamento" key={doc.id}>
                 <div className="atributos-agendamento">
-                  <span>Data: {agendamento.data}</span>
-                  <span>Responsável: {agendamento.responsavel}</span>
-                   <button onClick={() => deleteAgendamento(doc.id)}>
-                    Excluir
-                  </button>
+                  <span>Data: {formatDate(doc.data().date)}</span>
+                  <span>Responsável: {doc.data().responsavel}</span>
                 </div>
-              <button>X</button>
-             </li>
+                <button onClick={() => deleteAgendamento(doc.id)}>X</button>
+              </li>
             ))}
           </ul>
         </div>
+      </div>
     </StyledAgendamentoDiv>
   );
 };

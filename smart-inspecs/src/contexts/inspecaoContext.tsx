@@ -32,7 +32,6 @@ export const InspecaoContextProvider = ({
   const obraSelectedLocal = localStorage.getItem("@Smart-Inspecs:obraSelected");
   const obraSelected = obraSelectedLocal ? JSON.parse(obraSelectedLocal) : null;
 
-  console.log(empresa?.id, obraSelected?.id);
   const [agendamentosSnapshot, loadingAgendamentos, errorAgendamentos] =
     useCollection(
       collection(
@@ -44,7 +43,7 @@ export const InspecaoContextProvider = ({
         "agendamentos"
       )
     );
-
+  console.log(agendamentosSnapshot);
   useEffect(() => {}, []);
 
   const addAgendamento = async (data: iAgendamento) => {
