@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { StyledAgendamentoDiv } from "./style";
+import { Styled
+        Div } from "./style";
 import { ObrasContexts } from "../../../contexts/obrasContext";
 import { useForm } from "react-hook-form";
 import { InspecaoContext } from "../../../contexts/inspecaoContext";
@@ -46,55 +47,60 @@ const Agendamento = () => {
   return (
     <StyledAgendamentoDiv>
       <span>home ➙ obras ➙ {obraSelected?.nome}</span>
+      <span >Agendamentos</span>
       <div className="dash-content-box-area">
+      
+        <div className="container-criar_agendamento">
+          
+          <button
+            className="criar-agendamento"
+            onClick={() => setFormAgenda(true)}
+          >
+            Criar novo agendamento
+          </button>
+          {formAgenda && (
+            <form className="form-agenda" onSubmit={onSubmit}>
+              <fieldset className="form-campo">
+                <label className="campo-etiqueta" htmlFor="Data">Data e Hora</label>
+                <input
+                  className="campo-escrita"
+                  type="datetime-local"
+                  {...register("data")}
+                  placeholder="Data"
+                />
+              </fieldset>
+              <fieldset className="form-campo">
+                <label className="campo-etiqueta" htmlFor="Responsável">Responsável</label>
+                <input
+                  className="campo-escrita"
+                  type="text"
+                  {...register("responsavel")}
+                  placeholder="Responsável"
+                />
+              </fieldset>
+              
+              <button className="agendar">Agendar</button>
+            </form>
+          )}
+        </div>
         <div className="agendamentos">
-          <span className="section-title">Agendamentos</span>
+          <span className="section-title">Lista de Agendamentos</span>
           <ul className="agendamentos-box">
-            {agendamentosSnapshot.docs?.length === 0 && (
-              <span>Sem agendamentos</span>
-            )}
-            {agendamentosSnapshot.docs?.map((doc: any, index: number) => {
-              const data = doc.data();
-              return (
-                <li className="agendamento" key={index}>
-                  <span>Finalidade: {data.finalidade}</span>
-                  <span>Data: {formatDate(data?.date)}</span>
-                  <span>Responsável: {data?.responsavel}</span>
-                  <button onClick={() => deleteAgendamento(doc.id)}>
+            {agendamentos.length === 0 && <span>Sem agendamentos, por enquanto!</span>}
+            {agendamentos.map((agendamento, index) => (
+              <li className="agendamento" key={index}>
+                <div className="atributos-agendamento">
+                  <span>Data: {agendamento.data}</span>
+                  <span>Responsável: {agendamento.responsavel}</span>
+                   <button onClick={() => deleteAgendamento(doc.id)}>
                     Excluir
                   </button>
-                </li>
-              );
-            })}
+                </div>
+              <button>X</button>
+             </li>
+            ))}
           </ul>
         </div>
-        <button
-          className="criar-agendamento"
-          onClick={() => setFormAgenda(true)}
-        >
-          Criar novo agendamento
-        </button>
-        {formAgenda && (
-          <form className="form-agenda" onSubmit={onSubmit}>
-            <input
-              type="datetime-local"
-              {...register("date")}
-              placeholder="Data"
-            />
-            <input
-              type="text"
-              {...register("finalidade")}
-              placeholder="Finalidade"
-            />
-            <input
-              type="text"
-              {...register("responsavel")}
-              placeholder="Responsável"
-            />
-            <button>Agendar</button>
-          </form>
-        )}
-      </div>
     </StyledAgendamentoDiv>
   );
 };

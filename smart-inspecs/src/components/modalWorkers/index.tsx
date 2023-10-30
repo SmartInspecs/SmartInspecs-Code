@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { StyledModalWrapper } from "./style";
 import { ObrasContexts } from "../../contexts/obrasContext";
 import { useForm } from "react-hook-form";
-import pencil from "../../assets/pencil.png";
-import trash from "../../assets/trash.png";
+import pencil from "../../assets/icons-modalWorkers/Pencil.png";
+import trash from "../../assets//icons-modalWorkers/Remove.png";
 import ModalEditFunc from "../home/modalEditFunc";
 
 // mudando
@@ -57,9 +57,9 @@ const ModalFuncionarios = () => {
       <StyledModalWrapper>
         <div className="modal-box">
           <div className="modal-box-header">
-            <div className="modal-title">ModalFuncionarios</div>
+            <div className="modal-title">Funcionários</div>
             <button
-              className="modal-button"
+              className="button-close"
               onClick={() => setModalEditFunc(false)}
             >
               X
@@ -67,63 +67,80 @@ const ModalFuncionarios = () => {
           </div>
           <div className="modal-box-content">
             <div className="modal-content-text">
-              {obraSelected?.funcionarios.length === 0 && (
+              {obraSelected?.funcionarios ? (
+                <ul className="func-list">
+                  {obraSelected.funcionarios.map(
+                    (funcionario: any, index: number) => (
+                      <li key={index} className="func-card">
+                        <div className="func-card-left">
+                          <span>
+                            Nome:<p>{funcionario.nome}</p>
+                          </span>
+                          <span>
+                            Email:<p>{funcionario.email}</p>
+                          </span>
+                          <span>
+                            Cargo:<p>{funcionario.cargo}</p>
+                          </span>
+                        </div>
+                        <div className="func-card-right">
+                          <button onClick={() => handleEditFunc(index)}>
+                            <img src={pencil} alt="lápis, indicando edição" />
+                          </button>
+                          <button onClick={() => handleDeleteFunc(index)}>
+                            <img src={trash} alt="Lixo, indicando deletar" />
+                          </button>
+                        </div>
+                      </li>
+                    )
+                  )}
+                </ul>
+              ) : (
                 <p>Sem funcionários cadastrados</p>
               )}
-              <ul className="func-list">
-                {obraSelected?.funcionarios.map(
-                  (funcionario: any, index: number) => (
-                    <li key={index} className="func-card">
-                      <div className="func-card-left">
-                        <span>
-                          Nome: <p>{funcionario.nome}</p>
-                        </span>
-                        <span>
-                          Email: <p>{funcionario.email}</p>
-                        </span>
-                        <span>
-                          Cargo: <p>{funcionario.cargo}</p>
-                        </span>
-                      </div>
-                      <div className="func-card-right">
-                        <button onClick={() => handleEditFunc(index)}>
-                          <img src={pencil} alt="lápis, indicando edição" />
-                        </button>
-                        <button onClick={() => handleDeleteFunc(index)}>
-                          <img src={trash} alt="Lixo, indicando deletar" />
-                        </button>
-                      </div>
-                    </li>
-                  )
-                )}
-              </ul>
-              <button onClick={() => setAddFunc(true)}>
+              <button className="button-modal" onClick={() => setAddFunc(true)}>
                 Adicionar funcionários
               </button>
               {addFunc && (
                 <form noValidate onSubmit={onSubmit}>
-                  <input
+                  <fieldset className="form-campo">
+                    <label className="campo-etiqueta" htmlFor="Nome">Nome</label>
+                    <input
+                    className="campo-escrita"
                     type="text"
                     {...register("nome", {
                       required: "O nome do funcionário é obrigatório",
                     })}
                     placeholder="Nome"
-                  />
-                  <input
+                    />
+                  </fieldset>
+                  <fieldset className="form-campo">
+                    <label className="campo-etiqueta" htmlFor="E-mail">E-mail</label>
+                    <input
+                    className="campo-escrita"
                     type="email"
                     {...register("email", {
                       required: "O email do funcionário é obrigatório",
                     })}
-                    placeholder="Email"
-                  />
-                  <input
+                    placeholder="nome@email.com"
+                      />
+                  
+                  </fieldset>
+                  <fieldset className="form-campo">
+                    <label className="campo-etiqueta" htmlFor="cargo">Cargo</label>
+                    <input
+                    className="campo-escrita"
                     type="text"
                     {...register("cargo", {
                       required: "o cargo do funcionário é obrigatório",
                     })}
-                    placeholder="Cargo"
-                  />
-                  <button type="submit">Adicionar</button>
+                    placeholder="Engenheiro Civil"
+                    />
+                  </fieldset>
+                  
+                  
+                  
+                  <button className="button-modal" type="submit">Adicionar</button>
                 </form>
               )}
             </div>
