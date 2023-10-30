@@ -7,6 +7,7 @@ import iconGerenciar from "../../../assets/icons-home/gerenciar_usuarios.png";
 import iconDashboard from "../../../assets/icons-home/dashboard_empresa.png";
 import iconAlterar from "../../../assets/icons-home/alterar_dados.png";
 import { useNavigate } from "react-router-dom";
+import { Timestamp } from "firebase/firestore";
 
 const DashContentAdm = () => {
   const { obras, loadingObra, setModalOpen } = useContext(ObrasContexts);
@@ -67,6 +68,7 @@ const DashContentAdm = () => {
                     endereço: string;
                     inspecoes: [];
                     url: string;
+                    updatedAt?: Timestamp;
                   },
                   index: number
                 ) => <ObraCard obra={obra} key={index} />

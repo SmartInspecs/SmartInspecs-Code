@@ -3,7 +3,6 @@ import UserContext from "../../contexts/userContext";
 import { auth } from "../../services/firebaseConfig";
 import { Container } from "./style";
 import MenuSidebar from "./menu";
-import DashContentAdm from "./dash-content";
 import { ObrasContexts } from "../../contexts/obrasContext";
 import ModalCriarObra from "../modalCriarObra";
 import ModalObra from "./modalObra";

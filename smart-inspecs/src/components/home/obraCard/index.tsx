@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Card } from "./style";
 import { ObrasContexts } from "../../../contexts/obrasContext";
+import { Timestamp } from "firebase/firestore";
 
 interface iObraCardProps {
   obra: {
@@ -9,6 +10,7 @@ interface iObraCardProps {
     endereço: string;
     inspecoes: [];
     url: string;
+    updateAt?: { nanoseconds: number; seconds: number };
   };
 }
 
@@ -19,6 +21,14 @@ const ObraCard = ({ obra }: iObraCardProps) => {
     await getObra(obra.id);
     setModalObra(true);
     localStorage.setItem("@Smart-Inspecs:obraSelected", JSON.stringify(obra));
+  };
+
+  const handleDate = (date: number | undefined) => {
+    if (!date) {
+      return;
+    }
+    const dataParsed = new Date(date * 1000);
+    return dataParsed;
   };
 
   return (
@@ -36,7 +46,9 @@ const ObraCard = ({ obra }: iObraCardProps) => {
           </button>
           <button className="secondary-button">Editar</button>
         </div>
-        <span className="bottom-card-edit">Última edição: xx/yy/zzzz</span>
+        <span className="bottom-card-edit">
+          Última edição: {handleDate(obra.updateAt?.seconds)?.toString()}
+        </span>
       </div>
     </Card>
   );
