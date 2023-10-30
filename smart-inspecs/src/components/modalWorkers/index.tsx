@@ -48,9 +48,6 @@ const ModalFuncionarios = () => {
     setEdit([obraSelected.funcionarios[index]]);
   };
 
-  //////////////////////////////////////
-  /// trabalhar no edit funcionario ///
-  /////////////////////////////////////
   return (
     <>
       {modalEditInfo && <ModalEditFunc setModalEditInfo={setModalEditInfo} />}
