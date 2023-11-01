@@ -14,9 +14,6 @@ import iconGerenciar from "../../../assets/icons-obraSelect/gerenciar.png";
 import iconInspecao from "../../../assets/icons-obraSelect/inspecao.png";
 import { useNavigate, Link } from "react-router-dom";
 
-
-
-
 export interface iObraSelected {
   id: string;
   nome: string;
@@ -40,6 +37,10 @@ const ObraSelected = () => {
   const { modalEditInfo, setModalEditInfo, modalEditFunc, setModalEditFunc } =
     useContext(ObrasContexts);
   const navigate = useNavigate();
+  const handleClickOutside = (addUrl: string) => {
+    window.location.assign(addUrl);
+  };
+
   // adicionar nome da obra a url, de modo: home/obra/nomeobra
   //adicionar menu inspeções, e doc segurança
   return (
@@ -59,7 +60,10 @@ const ObraSelected = () => {
                 />
                 <span>Agendar Inspeção</span>
               </button>
-              <button className="box2">
+              <button
+                className="box2"
+                onClick={() => handleClickOutside("/home/inspecao-seguranca")}
+              >
                 <img src={iconInspecao} alt="Drone sobre uma mão" />
                 <span>Inspeção</span>
               </button>
@@ -138,9 +142,13 @@ const ObraSelected = () => {
                   <span>
                     Tipo de obra: <p>{obraSelected?.tipoObra}</p>
                   </span>
-                    <Link className="link-button" to='#' onClick={() => setModalEditInfo(true)}>
+                  <Link
+                    className="link-button"
+                    to="#"
+                    onClick={() => setModalEditInfo(true)}
+                  >
                     Editar informações
-                    </Link>
+                  </Link>
                 </div>
                 {obraSelected?.respTecnico &&
                 obraSelected?.prazo &&
@@ -152,7 +160,6 @@ const ObraSelected = () => {
                     adicione
                   </p>
                 )}
-                
               </div>
             </div>
           </div>

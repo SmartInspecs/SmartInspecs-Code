@@ -43,7 +43,7 @@ export const InspecaoContextProvider = ({
         "agendamentos"
       )
     );
-  console.log(agendamentosSnapshot);
+
   useEffect(() => {}, []);
 
   const addAgendamento = async (data: iAgendamento) => {
@@ -138,6 +138,7 @@ export const InspecaoContextProvider = ({
         agendamentosSnapshot,
         loadingAgendamentos,
         deleteAgendamento,
+        errorAgendamentos,
       }}
     >
       {children}

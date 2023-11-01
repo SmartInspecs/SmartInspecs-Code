@@ -22,6 +22,7 @@ import {
   setDoc,
   where,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 // Consertar tipos
 const UserContext = createContext<any | null>(null);
@@ -107,10 +108,11 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
             );
             setUser(user.providerData);
             navigate("/home");
+            toast.success("Login realizado com sucesso!");
           })
           .catch((error) => {
             console.log(error.code, error.message);
-            alert("Erro ao logar");
+            toast.error("Erro ao logar");
           });
       })
       .catch((error) => {
@@ -123,12 +125,13 @@ export const UserContextProvider = ({ children }: iDefaultProviderProps) => {
       .then(() => {
         localStorage.removeItem("@Smart-Inspecs");
         localStorage.removeItem("@Smart-Inspecs:obraSelected");
+        toast.success("Deslogado com sucesso!");
         setUser(null);
         navigate("/");
       })
       .catch((error) => {
         console.log(error.code, error.message);
-        alert("Erro ao deslogar");
+        toast.error("Erro ao deslogar");
       });
   };
 

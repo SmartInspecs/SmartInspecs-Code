@@ -13,12 +13,8 @@ interface iAgendamento {
 
 const Agendamento = () => {
   const { obraSelected } = useContext(ObrasContexts);
-  const {
-    addAgendamento,
-    deleteAgendamento,
-    agendamentosSnapshot,
-    loadingAgendamentos,
-  } = useContext(InspecaoContext);
+  const { addAgendamento, deleteAgendamento, agendamentosSnapshot } =
+    useContext(InspecaoContext);
   const [formAgenda, setFormAgenda] = useState(false);
   const [agendamentosLocal, setAgendamentosLocal] = useState<iAgendamento[]>(
     []

@@ -72,7 +72,7 @@ const StyledMenu = styled.div`
         gap: 20px;
     } 
 
-    .side-option > button {
+    .side-option-button {
         width: 80%;
         height: 50px;
         cursor: pointer;
@@ -84,10 +84,23 @@ const StyledMenu = styled.div`
         font-family: 'Poppins', sans-serif;
     }
 
-    .side-option > button:hover {
+    .side-option-button:hover {
         background-color: var(--primary-color);
         color: var(--white);
         transition: 0.3s ease;
+    }
+
+    .side-option-button-selected{
+        width: 80%;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 8px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: 2px solid var(--primary-color);
+        font-size: 0.9rem;
+        font-weight: var(--font-weight-2);
+        font-family: 'Poppins', sans-serif;
     }
 `;
 

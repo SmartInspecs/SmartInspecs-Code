@@ -10,6 +10,7 @@ import { WorkingInProgress } from "../pages/workingInProgress";
 import DashContentAdm from "../components/home/dash-content";
 import ObraSelected from "../components/home/obraSelect";
 import AgendamentoPage from "../pages/agendamento";
+import InspecaoSegPage from "../pages/inspecaoSegPage";
 
 const RoutesMain = () => {
   return (
@@ -28,6 +29,7 @@ const RoutesMain = () => {
         <Route index element={<DashContentAdm />} />
         <Route path="obra" element={<ObraSelected />} />
         <Route path="obra/agendamento" element={<AgendamentoPage />} />
+        <Route path="inspecao-seguranca" element={<InspecaoSegPage />} />
       </Route>
       <Route path="/working-progress" element={<WorkingInProgress />} />
       <Route path="*" element={<NotFoundPage />} />
