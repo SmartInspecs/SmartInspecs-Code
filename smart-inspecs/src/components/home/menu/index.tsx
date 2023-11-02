@@ -32,7 +32,7 @@ const MenuSidebar = () => {
           <div className="side-option">
             <button
               className={
-                path === "/home/inspecao-seguranca"
+                path.includes("inspecao-seguranca")
                   ? "side-option-button-selected"
                   : "side-option-button"
               }
