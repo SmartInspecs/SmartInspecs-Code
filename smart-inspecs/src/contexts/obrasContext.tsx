@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { iDefaultProviderProps, iNovaObra } from "./@types";
+import React from "react";
 import {
   Firestore,
   addDoc,
